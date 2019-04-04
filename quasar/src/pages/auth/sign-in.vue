@@ -9,7 +9,7 @@
       <q-card-title
         class="text-dark text-center"
       >
-        Entre na sua conta
+        Entre na suanta
       </q-card-title>
 
       <form @submit.prevent="signIn()">
