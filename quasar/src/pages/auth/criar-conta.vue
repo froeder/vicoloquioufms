@@ -127,7 +127,7 @@ export default {
 
       //Pega a referência de outro banco
       const DBuser = this.$firebase.initializeApp({
-        databaseURL: "https://arbomais-usuarios.firebaseio.com"
+        databaseURL: "https://VIColoquioUFMS-usuarios.firebaseio.com"
       }, 'DBuser')
       const dbuser = this.$firebase.database(DBuser);
       dbuser.ref('usuarios/'+id).set({

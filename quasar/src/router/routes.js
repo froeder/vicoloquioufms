@@ -20,8 +20,6 @@ import AdicionarArvorePrimeira from 'pages/arvores/AdicionarArvorePrimeira'
 import AdicionarArvoreSegunda from 'pages/arvores/AdicionarArvoreSegunda'
 
 import TesteOutro from 'pages/arvores/teste_outro'
-import Forbiden from 'pages/Forbiden'
-import PerfilExcluido from 'pages/PerfilExcluido'
 
 import AdminIndex from 'pages/admin/Admin'
 
@@ -128,16 +126,5 @@ export default [
   { // Always leave this as last one
     path: '*',
     component: NotFound
-  },
-
-  {
-    path: '/acesso-negado',
-    component: Forbiden,
-    name: 'acesso-negado'
-  },
-  {
-    path: '/perfil-excluido',
-    component: PerfilExcluido,
-    name: 'perfil-excluido'
   }
 ]

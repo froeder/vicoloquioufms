@@ -3,7 +3,7 @@
   "version": "1.5.7",
   "description": "A Quasar / Vue reference app that connects to Firebase.",
   "productName": "VI Coloquio",
-  "cordovaId": "cordova.petsistemas.arbomais",
+  "cordovaId": "cordova.petsistemas.VIColoquioUFMS",
   "author": "Jhonatan Froeder <froeder3@gmail.com>",
   "private": true,
   "scripts": {

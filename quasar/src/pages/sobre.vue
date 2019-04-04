@@ -5,8 +5,10 @@
         <q-card class="text-center">
           <q-card-title>Sobre</q-card-title>
           <q-card-main>
-            Aplicativo desenvolvido em parceiria com o PET SISTEMAS e o Laboratório de paisagismo.
-            Uma parceiria FACOM/FAENG
+            Aplicativo desenvolvido para o VI Colóquio dos Direitos Humanos, que aconteceu nos dias
+            x a y de Abril de 2019.
+            <br>
+            Desenvolvido e mantido por Jhonatan Froeder.
           </q-card-main>
         </q-card>
       </div>

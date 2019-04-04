@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.cordova.petsistemas.arbomais" version="1.5.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ArboMais</name>
+<widget id="org.cordova.petsistemas.VIColoquioUFMS" version="1.5.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>VIColoquioUFMS</name>
     <description>A Quasar / Vue reference app that connects to Firebase.</description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team

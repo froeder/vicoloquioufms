@@ -20,6 +20,6 @@ export default {
 
 <style lang="stylus" scoped>
   .q-layout
-    background url('~assets/arbo.jpg') no-repeat center center fixed
+    background url('~assets/direitos.jpg') no-repeat center center fixed
     background-size cover
 </style>

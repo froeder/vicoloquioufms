@@ -1,6 +1,6 @@
 {
-    "name": "cordova.petsistemas.arbomais",
-    "displayName": "ArboMais",
+    "name": "cordova.petsistemas.VIColoquioUFMS",
+    "displayName": "VIColoquioUFMS",
     "version": "1.3.8",
     "description": "A sample Apache Cordova application that responds to the deviceready event.",
     "main": "index.js",

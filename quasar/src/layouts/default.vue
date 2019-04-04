@@ -17,7 +17,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          ArboMais<small>  v{{versao_banco}}  </small>
+          VIColoquioUFMS<small>  v{{versao_banco}}  </small>
         </q-toolbar-title>
 
         <q-btn
