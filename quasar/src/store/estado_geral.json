@@ -1,0 +1,22 @@
+[
+    {
+        "label": "Ótimo",
+        "value": "Ótimo"
+    },
+    {
+        "label": "Bom",
+        "value": "Bom"
+    },
+    {
+        "label": "Regular",
+        "value": "Regular"
+    },
+    {
+        "label": "Péssimo",
+        "value": "Péssimo"
+    },
+    {
+        "label": "Morta",
+        "value": "Morta"
+    }
+]

@@ -1,0 +1,144 @@
+{
+    "estadoGeral": [
+          "Ótimo", 
+          "Bom", 
+          "Regular", 
+          "Péssimo", 
+          "Morta"
+        ],
+        "equilibrioGeral": [
+          "Sim",
+          "Não",
+          "Caule",
+          "Copa"
+        ],
+        "fito": [
+          "Pulgão",
+          "Broca",
+          "Cupim",
+          "Formiga",
+          "Lagarta",
+          "Vírus",
+          "Inseto",
+          "Bactéria",
+          "Fungo",
+          "Ácaro",
+          "Cochonilha",
+          "Vaquinha"
+        ],
+        "intensidade": [
+          "Leve",
+          "Médio",
+          "Pesado",
+          "Ausente"
+        ],
+        "ataque": ["Caule", "Raiz", "Frutos", "Flores", "Ramos", "Folhas"],
+        "eco": ["Insetos", "Ninhos", "Líquens", "Epífitas", "Parasitas"],
+        "lesao": [
+          "Lesão Grave",
+          "Lesão Média",
+          "Lesão Leve",
+          "Ausente",
+          "Vandalismo",
+          "Poda inadequada"
+        ],
+        "fenologia": ["Folha", "Flor", "Fruto"],
+        "localGeral": [
+          "Cant. central",
+          "Calçada",
+          "Praça",
+          "Via Pública",
+          "Campo"
+        ],
+        "localizacaoRelativa": [
+          "Junto a guia",
+          "Junto à divisa",
+          "Centrada",
+          "Campo"
+        ],
+        "pavimento": [
+          "Terra",	
+          "Cimento",	
+          "Pedra",	
+          "Cerâmico",	
+          "Grama"	
+        ],
+        "afloramRaiz": [
+          "Calçada",
+          "Canteiro",
+          "Construção",
+          "Rua",
+          "Não"
+        ],
+        "participacao": [
+          "Isolada",
+          "Duas ou mais"
+        ],
+        "tipoFiacao": [
+          "Derivação",
+          "1 rua",
+          "2 ria",
+          "Tel",
+          "Ausente"
+        ],
+        "trafego": [
+          "Leve",
+          "Médio",
+          "Pesado",
+          "Ausente"
+        ],
+        "recuo":["Sim","Não"],
+        "manilha": ["Sim", "Não"],
+        "situacaoAdequada": ["Sim", "Não"],
+        "coloPavimentado": ["Sim", "Não"],
+        "fiacao": [
+          "Atual",
+          "Potencial",
+          "Ausente"
+        ],
+        "posteamento": [
+          "Atual",
+          "Potencial",
+          "Ausente"
+        ],
+        "iluminacao": [
+          "Atual",			
+          "Potencial",			
+          "Ausente"			
+        ],
+        "sinalizacao": [
+          "Atual",		
+          "Potencial",		
+          "Ausente"		
+        ],
+        "muroConstrucao": [
+          "Atual",								
+          "Potencial",								
+          "Ausente"								
+        ],
+        "acaoExecutada":[
+          "Poda leve",
+          "Controle",
+          "Substituição",
+          "Poda pesada",
+          "Plantio",
+          "Poda inadequada",
+          "Reparos de danos",			
+          "Ampliação de canteiro"		
+        ],
+        "acaoRecomendada": [
+          "Reparos de danos",		
+          "Ampliar canteiro",		
+          "Substituição",
+          "Poda leve",		
+          "Poda pesada",				
+          "Plantio",		
+          "Controle"		
+        ],
+        "qualidadeAcao":[
+          "Ótima",
+          "Boa",
+          "Regular",
+          "Péssima"
+        ]
+}
