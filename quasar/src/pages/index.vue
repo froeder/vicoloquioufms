@@ -94,12 +94,6 @@ export default {
 </script>
 
 <style scoped>
-.q-card {
-  background: rgb(131, 221, 131);  /* fallback for old browsers */
-  background: -webkit-linear-gradient(left top; #b78905, #e2b83f);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom right, #b78905,#e2b83f);
-  color: white;
-}
 #myProgress {
   width: 100%;
   background-color: grey;
