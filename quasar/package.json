@@ -15,7 +15,7 @@
     "axios": "^0.18.0",
     "cordova": "^8.0.0",
     "firebase": "^5.0.4",
-    "firebase-tools": "^6.5.0",
+    "firebase-tools": "^6.5.3",
     "j-i-c": "^2.0.2",
     "json2csv": "^4.3.5",
     "npx": "^10.2.0",
@@ -41,7 +41,7 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.3.0",
-    "quasar-cli": "^0.16.0"
+    "quasar-cli": "^0.17.24"
   },
   "engines": {
     "node": ">= 8.9.0",

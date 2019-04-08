@@ -1,6 +1,6 @@
 <template>
-  <q-page class="flex flex-center">
-    <q-card color="primary">
+  <q-page padding >
+    <q-card color="white">
       <q-stepper color="secondary" ref="stepper" alternative-labels>
         <q-step default name="first" title="Informações Básicas">
           <div class="gutter-xs">
@@ -17,8 +17,8 @@
               class="q-mt-md col-xs-12"
             >
               <q-input
-                float-label="Naturalidade cidade"
-                v-model="credenciais.naturalidade_cidade"
+                float-label="Naturalidade Estado"
+                v-model="credenciais.naturalidade_estado"
                 type="text"
               />
             </q-field>
@@ -26,8 +26,8 @@
               class="q-mt-md col-xs-12"
             >
               <q-input
-                float-label="Estado"
-                v-model="credenciais.naturalidade_estado"
+                float-label="Naturalidade Cidade"
+                v-model="credenciais.naturalidade_cidade"
                 type="text"
               />
             </q-field>
@@ -40,7 +40,47 @@
                 type="text"
               />
             </q-field>
-           
+            <q-field class="q-mt-md col-xs-12">
+              Sexo
+              <br>
+              <q-radio
+                v-model="credenciais.sexo"
+                val="masculino"
+                label="Masculino"
+              />
+              <q-radio
+                v-model="credenciais.sexo"
+                val="feminino"
+                label="Feminino"
+              />
+            </q-field>
+            <q-field
+              class="q-mt-md col-xs-12"
+            >
+              <q-input
+                float-label="Identidade"
+                v-model="credenciais.identidade"
+                type="text"
+              />
+            </q-field>
+            <q-field
+              class="q-mt-md col-xs-12"
+            >
+              <q-input
+                float-label="Emissor"
+                v-model="credenciais.Emissor"
+                type="text"
+              />
+            </q-field>
+            <q-field
+              class="q-mt-md col-xs-12"
+            >
+              <q-input
+                float-label="E-mail pessoal"
+                v-model="credenciais.email_pessoal"
+                type="email"
+              />
+            </q-field>
           </div>
 
           <!-- Navigation for this step at the end of QStep-->
@@ -49,15 +89,70 @@
           </q-stepper-navigation>
         </q-step>
 
-        <q-step name="second" title="Custom channels">
-          <div v-for="n in 10">Step 2</div>
+        <q-step name="Endereço" title="Endereço">
+          <div class="gutter-xs">
+            <p>Endereço Residêncial</p>
+            <q-field
+              class="q-mt-md col-xs-12"
+            >
+              <q-input
+                float-label="Rua"
+                v-model="credenciais.rua_residencial"
+                type="text"
+              />
+            </q-field>
+            <q-field
+              class="q-mt-md col-xs-12"
+            >
+              <q-input
+                float-label="Bairro"
+                v-model="credenciais.bairro_residencial"
+                type="text"
+              />
+            </q-field>
+            <q-field
+              class="q-mt-md col-xs-12"
+            >
+              <q-input
+                float-label="MUnicípio"
+                v-model="credenciais.municipio_residencial"
+                type="text"
+              />
+            </q-field>
+            <q-field
+              class="q-mt-md col-xs-12"
+            >
+              <q-input
+                float-label="Estado"
+                v-model="credenciais.estado_residencial"
+                type="text"
+              />
+            </q-field>
+            <q-field
+              class="q-mt-md col-xs-12"
+            >
+              <q-input
+                float-label="Celular"
+                v-model="credenciais.cep_residencial"
+                type="text"
+              />
+            </q-field>
+          </div>
           <q-stepper-navigation>
-            <q-btn color="secondary" @click="$refs.stepper.next()" label="Next"/>
-            <q-btn color="secondary" flat @click="$refs.stepper.previous()" label="Back"/>
+            <q-btn color="secondary" @click="$refs.stepper.next()" label="Próximo"/>
+            <q-btn color="secondary" flat @click="$refs.stepper.previous()" label="VOltar"/>
           </q-stepper-navigation>
         </q-step>
-        <q-step name="third" title="Get code">
-          <div v-for="n in 3">Step 3</div>
+        <q-step name="Contato" title="Contato">
+          <q-field
+              class="q-mt-md col-xs-12"
+            >
+              <q-input
+                float-label="Rua"
+                v-model="credenciais.rua_residencial"
+                type="text"
+              />
+            </q-field>
           <q-stepper-navigation>
             <q-btn color="secondary" @click="$refs.stepper.next()" label="Next"/>
             <q-btn color="secondary" flat @click="$refs.stepper.previous()" label="Back"/>
@@ -78,6 +173,10 @@
           </q-stepper-navigation>
         </q-step>
       </q-stepper>
+      <br>
+      <q-btn to="/" class="full-width" color="primary">Voltar</q-btn>
+      <br>
+      <br>
     </q-card>
     <!-- <q-card
       class="card-sign-in q-pa-md"
@@ -177,6 +276,7 @@
 <script>
 import { uid } from "quasar";
 import { Notify } from "quasar";
+import {TheMask} from 'vue-the-mask'
 
 export default {
   name: "criarConta",
@@ -203,10 +303,6 @@ export default {
       let collection = this.$firebase.firestore().collection("usuarios");
       collection.add(this.credenciais);
     },
-    salvaBancos(usuario) {
-      this.atribuiMetadados(usuario.metadata);
-      this.salvaFirestore(usuario);
-    },
     exibeAlerta(message) {
       if (message === "Password should be at least 6 characters")
         this.$q.notify("A senha precisa ter mais que 6 caracteres!");
@@ -228,7 +324,7 @@ export default {
           )
           .then(user => {
             let usuarios = user.user;
-            this.salvaBancos(usuarios);
+            this.salvaFirestore(usuarios);
 
             Notify.create({
               color: "positive",
