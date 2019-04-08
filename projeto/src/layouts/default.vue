@@ -17,7 +17,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          VIColoquioUFMS<small>  v{{versao_banco}}  </small>
+          IVColoquioUFMS<small>  v{{versao_banco}}  </small>
         </q-toolbar-title>
 
         <q-btn
@@ -48,47 +48,18 @@
               <big><q-icon name="home"></q-icon></big> Home
             </q-item-main>
           </q-item>
-          <q-item  v-if="papel=='editor'" style="color:white" :to="{ name: 'adicionar-arvore' }">
-            <q-item-main>
-              <big><q-icon name="add"></q-icon></big> Adicionar árvore
-            </q-item-main>
-          </q-item>
-          <q-item v-if="papel=='admin'||papel=='editor'" style="color:white" :to="{ name: 'visualizar-arvores' }">
-            <q-item-main>
-              <big><q-icon name="local_florist"></q-icon></big> Árvores
-            </q-item-main>
-          </q-item>
-          <q-item v-if="papel=='admin'" style="color:white" :to="{ name: 'visualizar-usuarios' }">
-            <q-item-main>
-              <big><q-icon name="people"></q-icon></big> Usuários
-            </q-item-main>
-          </q-item>
-          <q-item  v-if="papel=='admin'" style="color:white" :to="{ name: 'admin-index' }">
-            <q-item-main>
-              <big><q-icon name="settings"></q-icon></big> ADMIN
-            </q-item-main>
-          </q-item>
+          
           <q-item style="color:white" :to="{ name: 'sobre' }">
             <q-item-main>
               <big><q-icon name="help_outline"></q-icon></big> Sobre
             </q-item-main>
           </q-item>
 
-        <!-- <q-item style="color:white" :to="{ name: 'adicionar-arvore-primeira' }">
-          <q-item-main>Teste</q-item-main>
-        </q-item> -->
-
-        
-        <!-- <q-item style="color:white" :to="{ name: 'testeOutro' }">
-          <q-item-main>Teste Outro</q-item-main>
-        </q-item> -->
-      
-
-        <q-item style="color:white" @click.native="signOut()">
-          <q-item-main>
-            <big><q-icon name="exit_to_app"></q-icon></big> Sair
-          </q-item-main>
-        </q-item>
+          <!-- <q-item style="color:white" @click.native="signOut()">
+            <q-item-main>
+              <big><q-icon name="exit_to_app"></q-icon></big> Sair
+            </q-item-main>
+          </q-item> -->
 
       </q-list>
     </q-layout-drawer>
@@ -99,8 +70,8 @@
       </q-slide-transition>
     </q-page-container>
 
-    <q-layout-footer style="padding:0.1em ; background-color:#9ea71d">
-      <small> PET Sistemas - LabPa Laboratório da paisagem</small>
+    <q-layout-footer style="padding:0.1em ; background-color:#C1002B">
+      <small> Desenvolvido por Jhonatan Froeder</small>
     </q-layout-footer>
 
   </q-layout>
@@ -117,7 +88,6 @@ export default {
       leftDrawerOpen  : true,
       usuario_logado  : '',
       versao_banco    : '',
-      cor             : '#9ea71d',
       papel           : getUserLocal().usuario.papel
     }
   },
@@ -169,9 +139,7 @@ export default {
   background-color: #D8D3BE
 }
 .q-layout-drawer{
-  background: rgba(131, 221, 131, 0.8);  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top  , #96B72B, #96B72B,#96B72B);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top,#96B72B, #96B72B, #96B72B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: rgba(172, 32, 37, 0.8);  /* fallback for old broW3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    opacity: .9;
 }
 .q-item{

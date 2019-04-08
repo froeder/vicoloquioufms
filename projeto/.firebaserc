@@ -1,6 +1,6 @@
 {
   "projects": {
-    "prod": "VIColoquio",
+    "prod": "IVColoquio",
     "vicoloquio": "vicoloquioufms",
     "default": "vicoloquioufms"
   }

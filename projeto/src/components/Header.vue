@@ -16,7 +16,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          VIColoquioUFMS<small>  v{{versao_banco}}  </small>
+          IVColoquioUFMS<small>  v{{versao_banco}}  </small>
         </q-toolbar-title>
 
         <q-btn

@@ -120,8 +120,8 @@ module.exports = function (ctx) {
       // workboxPluginMode: 'InjectManifest',
       // workboxOptions: {},
       manifest: {
-        name: 'VIColoquio App',
-        short_name: 'VIColoquio',
+        name: 'IVColoquio App',
+        short_name: 'IVColoquio',
         description: 'Um aplicativo PET-Sistemas e Lab. Paisagismo',
         display: 'standalone',
         start_url: '/',
@@ -248,7 +248,7 @@ module.exports = function (ctx) {
       }
     },
     cordova: {
-      id: 'org.cordova.petsistemas.VIColoquio',
+      id: 'org.cordova.petsistemas.IVColoquio',
       version: '1.5.7'
     },
     electron: {

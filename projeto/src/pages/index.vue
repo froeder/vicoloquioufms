@@ -3,24 +3,17 @@
     <span class="text-weight-thin">Página Inicial</span>
     <div class="row gutter-xs">
       <div class="col-xs-12">
-        <q-card>
-          <p>Bem Vindo <br>
+        
+          <p>Seja Bem Vindo(a) <br>
             <small>{{usuarioLogado}}</small></p>
 
-        </q-card>
+            <br>
+            <br>
+            Em breve traremos mais informações para você.
+
+        
       </div>
-      <div class="col-xs-6">
-        <q-card>
-          <strong>{{qtde_arvore}}</strong>  <br>
-          <small>Árvores Adicionadas</small>
-        </q-card>
-      </div>
-      <div class="col-xs-6">
-        <q-card>
-          <strong>{{qtde_arvore_usuario}}</strong>  <br>
-          <small>Adicionadas por você</small>
-        </q-card>
-      </div>
+      
     </div>
   </q-page>
 </template>

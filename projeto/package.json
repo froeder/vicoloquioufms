@@ -1,9 +1,9 @@
 {
-  "name": "VIColoquio",
+  "name": "IVColoquio",
   "version": "1.5.7",
   "description": "A Quasar / Vue reference app that connects to Firebase.",
-  "productName": "VIColoquio",
-  "cordovaId": "cordova.petsistemas.VIColoquio",
+  "productName": "IVColoquio",
+  "cordovaId": "cordova.petsistemas.IVColoquio",
   "author": "Jhonatan Froeder <froeder3@gmail.com>",
   "private": true,
   "scripts": {

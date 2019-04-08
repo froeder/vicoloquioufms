@@ -382,6 +382,12 @@ export default {
       palestra5: false,
       palestra6: false,
       credenciais: {
+        palestra1: false,
+        palestra2: false,
+        palestra3: false,
+        palestra4: false,
+        palestra5: false,
+        palestra6: false,
         minoria:[],
         palestras: []
       },
@@ -804,6 +810,7 @@ export default {
           })
           .catch(error => {
             let message = error.message;
+            this.exibeAlerta(message)
             console.log(message)
           });
       } else {
