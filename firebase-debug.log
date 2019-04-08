@@ -1,0 +1,55 @@
+[debug] [2019-04-08T21:30:12.468Z] ----------------------------------------------------------------------
+[debug] [2019-04-08T21:30:12.472Z] Command:       /usr/bin/node /usr/local/bin/firebase deploy
+[debug] [2019-04-08T21:30:12.472Z] CLI Version:   6.0.0
+[debug] [2019-04-08T21:30:12.472Z] Platform:      linux
+[debug] [2019-04-08T21:30:12.472Z] Node Version:  v8.15.1
+[debug] [2019-04-08T21:30:12.472Z] Time:          Mon Apr 08 2019 17:30:12 GMT-0400 (-04)
+[debug] [2019-04-08T21:30:12.472Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-04-08T21:30:12.506Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-08T21:30:12.506Z] > authorizing via signed-in user
+[debug] [2019-04-08T21:30:12.506Z] [iam] checking project arbomais for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2019-04-08T21:30:12.509Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/arbomais:testIamPermissions  
+
+[debug] [2019-04-08T21:30:13.638Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-08T21:30:13.640Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/arbomais  
+ 
+[debug] [2019-04-08T21:30:15.114Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'arbomais'...
+[info] 
+[info] i  deploying database, storage, firestore
+[info] i  database: checking rules syntax...
+[debug] [2019-04-08T21:30:15.153Z] >>> HTTP REQUEST PUT https://arbomais.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+[debug] [2019-04-08T21:30:16.184Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database arbomais is valid
+[debug] [2019-04-08T21:30:16.188Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/arbomais  
+ 
+[debug] [2019-04-08T21:30:17.576Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2019-04-08T21:30:17.579Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/arbomais:test  
+
+[debug] [2019-04-08T21:30:19.162Z] <<< HTTP RESPONSE 200
+[info] ✔  storage: rules file storage.rules compiled successfully
+[info] i  firestore: checking firestore.rules for compilation errors...
+[debug] [2019-04-08T21:30:19.166Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/arbomais:test  
+
+[debug] [2019-04-08T21:30:19.483Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[info] i  storage: uploading rules storage.rules...
+[debug] [2019-04-08T21:30:19.486Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/arbomais/rulesets  
+
+[debug] [2019-04-08T21:30:20.885Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-08T21:30:20.886Z] [rules] created ruleset projects/arbomais/rulesets/e5346bd6-3b02-4463-b80d-540502e92588
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2019-04-08T21:30:20.887Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/arbomais/rulesets  
+
+[debug] [2019-04-08T21:30:20.889Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta1/projects/arbomais/databases/(default)/indexes  
+ 

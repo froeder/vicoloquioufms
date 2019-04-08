@@ -44,6 +44,7 @@ module.exports = function (ctx) {
     },
     // framework: 'all' --- includes everything; for dev only!
     framework: {
+      i18n: 'pt',
       components: [
         'QBtn',
         'QCard',
@@ -95,7 +96,8 @@ module.exports = function (ctx) {
         'QPopover',
         'QAutocomplete',
         'QFab',
-        'QPageSticky'
+        'QPageSticky',
+        'QDatetimePicker'
       ],
       directives: ['Ripple', 'CloseOverlay'],
       // Quasar plugins

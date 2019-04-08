@@ -1,9 +1,10 @@
 {
-  "hosting" : {
-    "public" : "dist/pwa-mat",
-    "rewrites": [ {
-      "source": "**",
-      "destination": "/index.html"
-    } ]
+  "hosting": {
+    "public": "dist/pwa-mat",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
   }
 }

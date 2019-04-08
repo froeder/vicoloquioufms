@@ -1,6 +1,7 @@
 <template>
   <q-page padding >
     <q-card color="white">
+      <form @submit.prevent="criarConta()">
       <q-stepper color="secondary" ref="stepper" alternative-labels>
         <q-step default name="first" title="Informações Básicas">
           <div class="gutter-xs">
@@ -34,11 +35,13 @@
             <q-field
               class="q-mt-md col-xs-12"
             >
-              <q-input
+            Data Nascimento
+              <!-- <q-input
                 float-label="Nascimento"
                 v-model="credenciais.nascimento"
                 type="text"
-              />
+              /> -->
+              <q-datetime v-model="credenciais.nascimento" type="date" />
             </q-field>
             <q-field class="q-mt-md col-xs-12">
               Sexo
@@ -108,7 +111,7 @@
               class="q-mt-md col-xs-12"
             >
               <q-input
-                float-label="Rua"
+                float-label="Rua/Avenida/etc"
                 v-model="credenciais.rua_residencial"
                 type="text"
               />
@@ -157,7 +160,7 @@
             class="q-mt-md col-xs-12"
           >
             Telefone Residencial: <br>
-            <the-mask :mask="['(##) ####-####', '(##) ####-####']" />
+            <the-mask v-model="credenciais.telefone_residencial" :mask="['(##) ####-####', '(##) ####-####']" />
           </q-field>
           <q-field
             class="q-mt-md col-xs-12"
@@ -169,6 +172,30 @@
             />
             <small>(Será usado para fazer login)</small>
           </q-field>
+          <br>
+          <br>
+          <br>
+          Senha para usar o sistema:
+          <q-field
+              class="q-mt-lg col-xs-12"
+            >
+              <q-input
+                float-label="Senha"
+                v-model="credenciais.password"
+                type="password"
+                autocomplete="current-password"
+              />
+            </q-field>
+            <q-field
+              class="q-mt-lg col-xs-12"
+            >
+              <q-input
+                float-label="Redigite a Senha"
+                v-model="credenciais.confirme_password"
+                type="password"
+                autocomplete="current-password"
+              />
+            </q-field>
           <q-stepper-navigation>
             <q-btn color="secondary" @click="$refs.stepper.next()" label="Próximo"/>
             <q-btn color="secondary" flat @click="$refs.stepper.previous()" label="Voltar"/>
@@ -220,33 +247,33 @@
               v-model="credenciais.nivel"
               :options="opcoes_nivel_iniciativa_privada"
             />
-            <span v-if="crendeciais.nivel">
+            <span v-if="credenciais.nivel">
               Espaço
             </span>
             <q-select
               v-if="credenciais.categoria=='Estudante'"
-              v-model="credenciais.nivel"
-              :options="opcoes_nivel_estudante"
+              v-model="credenciais.espaco"
+              :options="opcoes_espaco_estudante"
             />
             <q-select
               v-if="credenciais.categoria=='Professor(a)'"
-              v-model="credenciais.nivel"
-              :options="opcoes_nivel_professor"
+              v-model="credenciais.espaco"
+              :options="opcoes_espaco_professor"
             />
             <q-select
               v-if="credenciais.categoria=='Gestor(a) ou Servidor(a) público(a)'"
-              v-model="credenciais.nivel"
-              :options="opcoes_nivel_gestor"
+              v-model="credenciais.espaco"
+              :options="opcoes_espaco_gestor"
             />
             <q-select
               v-if="credenciais.categoria=='Conselheiro(a)'"
-              v-model="credenciais.nivel"
-              :options="opcoes_nivel_conselheiro"
+              v-model="credenciais.espaco"
+              :options="opcoes_espaco_conselheiro"
             />
             <q-select
               v-if="credenciais.categoria=='Iniciativa Privada'"
-              v-model="credenciais.nivel"
-              :options="opcoes_nivel_iniciativa_privada"
+              v-model="credenciais.espaco"
+              :options="opcoes_espaco_iniciativa_privada"
             />
 
           <q-stepper-navigation>
@@ -254,77 +281,66 @@
             <q-btn color="secondary" flat @click="$refs.stepper.previous()" label="Voltar"/>
           </q-stepper-navigation>
         </q-step>
-      </q-stepper>
-      <br>
-      <q-btn to="/" class="full-width" color="primary">Voltar</q-btn>
-      <br>
-      <br>
-    </q-card>
-    <!-- <q-card
-      class="card-sign-in q-pa-md"
-      inline
-      color="white"
-    >
-      <q-card-title class="text-center" style="color:black">Criar Conta</q-card-title>
-      <form @submit.prevent="criarConta()">
-        <q-card-main>
-          <div class="row gutter-xs">
-            <q-field
-              class="q-mt-md col-xs-12"
-            >
-              <q-input
-                float-label="Nome"
-                v-model="credenciais.nome"
-                type="text"
-              />
-            </q-field>
-            <q-field
-              class="q-mt-md col-xs-12"
-            >
-              <q-input
-                float-label="Email"
-                v-model="credenciais.email"
-                type="email"
-              />
-            </q-field>
-            <q-field
-              class="q-mt-md col-xs-12"
-            >
-              <q-input
-                float-label="Instituição"
-                v-model="credenciais.instituicao"
-                type="text"
-              />
-            </q-field>
-            <q-field
-              class="q-mt-lg col-xs-12"
-            >
-              <q-input
-                float-label="Senha"
-                v-model="credenciais.password"
-                type="password"
-                autocomplete="current-password"
-              />
-            </q-field>
-            <q-field
-              class="q-mt-lg col-xs-12"
-            >
-              <q-input
-                float-label="Redigite a Senha"
-                v-model="credenciais.confirme_password"
-                type="password"
-                autocomplete="current-password"
-              />
-            </q-field>
+        <q-step name="sexto" title="Palestras">
+          Palestras <br>
+          <small>Selecione quais irá participar </small>
+          <br>
+          <br>
+          
+          <div>
+            Palestra Magna: <strong>Direitos Humanos - da ética natual à ética do comportamento".</strong>
+            <br>
+            <strong>Profª Drª Maria de Lourdes Jeffery Contini.</strong> <br>
+            Horário: <strong>19h30 - 20h30 </strong>
+            <br>
+            <q-checkbox v-model="credenciais.palestra1" label="Participar" />
           </div>
-        </q-card-main>
+          <br><br>
+          <strong>Primeria Parte - Direitos Humanos, Educação e Antropologia Social</strong> <br><br>
+          <div>
+            Direitos Humanos de crianças em pesquisa e extensão realizados em escolas públicas de Campo Grande /MS. <br>
+            <strong>Profª Drª Constantina Xavier Filha</strong><br>
+            Horário:<strong>08h10 - 08h30</strong> <br>
+            <q-checkbox v-model="credenciais.palestra2" label="Participar" />
+          </div><br><br>
 
-        <q-card-actions
-          align="center"
-          class="q-mt-lg"
-        >
-        <div class="row gutter-xs">
-          <div class="col-xs-12 col-md-12">
+          <div>
+            Profissão: perigo - O fazer antropológico em tempo de ataque aos direitos humanos. <br><br>
+            <strong>Prof.Dr. Guilherme Rodrigues Passamani</strong> <br>
+            Horário:<strong>08h30 - 08h50</strong> <br>
+            <q-checkbox v-model="credenciais.palestra3" label="Participar" />
+          </div><br><br>
+
+          <big>Intervalo 08h50 - 09h10</big>
+
+          <br><br>
+
+          <strong>Segunda Parte: Direitos Humanos, Psicologia e Comunicação</strong>
+
+          <br><br>
+
+          <div>
+            Direitos Humanos e os desafio à solidariedade intergeracional no cenário de crise ambiental global. <br>
+            <strong>Profª Drª Lívia Gaigher Bósio Campello</strong> <br>
+            Horário:<strong>09h10 - 09h30</strong> <br>
+            <q-checkbox v-model="credenciais.palestra4" label="Participar" />
+          </div> <br><br>
+
+          <div>
+            Psicologia, Formação e Direitos Humanos: desafios contemporâneos. <br>
+            <strong>Profª Drª Sandra Maria Francisco Amorim.</strong><br>
+            Horário:<strong>09h30 - 09h50</strong> <br>
+            <q-checkbox v-model="credenciais.palestra5" label="Participar" />
+          </div><br><br>
+
+          <div>
+            Entre a humanização e a estigmatização - os desafios da cobertura jornalística sobre direitos humanos. <br>
+            <strong>Msc. Lynara Ojeda de Souza.</strong><br>
+            Horário:<strong>09h50 - 10h10</strong> <br>
+            <q-checkbox v-model="credenciais.palestra6" label="Participar" />
+          </div>
+
+          <q-stepper-navigation>
             <q-btn
               class="full-width"
               label="Salvar"
@@ -335,23 +351,16 @@
             >
               <q-spinner v-if="loading"/>
             </q-btn>
-          </div>
-          <div class="col-xs-12 col-md-12">
-            <q-btn
-              class="full-width"
-              label="Voltar"
-              color="info"
-              size="large"
-              icon="arrow_back_ios"
-              @click.native="$router.replace('sign-in')"
-            >
-            </q-btn>
-          </div>
-
-        </div>
-        </q-card-actions>
+            <q-btn color="secondary" flat @click="$refs.stepper.previous()" label="Voltar"/>
+          </q-stepper-navigation>
+        </q-step>
+      </q-stepper>
+      <br>
+      <q-btn to="/" class="full-width" color="primary">Voltar</q-btn>
+      <br>
+      <br>
       </form>
-    </q-card>-->
+    </q-card>
   </q-page>
 </template>
 
@@ -366,8 +375,15 @@ export default {
   data() {
     return {
       minoria: [],
+      palestra1: false,
+      palestra2: false,
+      palestra3: false,
+      palestra4: false,
+      palestra5: false,
+      palestra6: false,
       credenciais: {
         minoria:[],
+        palestras: []
       },
       loading: true,
       termo: false,
@@ -566,6 +582,174 @@ export default {
           label: 'Profissional Liberal',
           value: 'Profissional Liberal'
         }
+      ],
+      opcoes_espaco_estudante: [
+        {
+          label: 'Escola pública',
+          value: 'Escola pública'
+        },
+        {
+          label: 'Escola particular',
+          value: 'Escola particular'
+        },
+        {
+          label: 'UFMS',
+          value: 'UFMS'
+        },
+        {
+          label: 'Outra',
+          value: 'Outra'
+        },
+        {
+          label: 'Outra Universidade pública',
+          value: 'Outra Universidade pública'
+        },
+        {
+          label: 'Faculdade ou universidade particular',
+          value: 'Faculdade ou universidade particular'
+        },
+      ],
+      opcoes_espaco_professor: [
+        {
+          label: 'Escola pública',
+          value: 'Escola pública'
+        },
+        {
+          label: 'Escola particular',
+          value: 'Escola particular'
+        },
+        {
+          label: 'UFMS',
+          value: 'UFMS'
+        },
+        {
+          label: 'Outra',
+          value: 'Outra'
+        },
+        {
+          label: 'Outra Universidade pública',
+          value: 'Outra Universidade pública'
+        },
+        {
+          label: 'Faculdade ou universidade particular',
+          value: 'Faculdade ou universidade particular'
+        },
+      ],
+      opcoes_espaco_gestor: [
+        {
+          label: 'Educação',
+          value: 'Educação'
+        },
+        {
+          label: 'Saúde',
+          value: 'Saúde'
+        },
+        {
+          label: 'Trabalho',
+          value: 'Trabalho'
+        },
+        {
+          label: 'Esporte e Lazer',
+          value: 'Esporte e Lazer'
+        },
+        {
+          label: 'Cultura',
+          value: 'Cultura'
+        },
+        {
+          label: 'Assistência Social',
+          value: 'Assistência Social'
+        },
+        {
+          label: 'Meio Ambiente',
+          value: 'Meio Ambiente'
+        },
+        {
+          label: 'Moradia',
+          value: 'Moradia'
+        },
+        {
+          label: 'Transporte',
+          value: 'Transporte'
+        },
+        {
+          label: 'Direitos Humanos',
+          value: 'Direitos Humanos'
+        },
+        {
+          label: 'Forças Armadas',
+          value: 'Forças Armadas'
+        },
+        {
+          label: 'Segurança Pública',
+          value: 'Segurança Pública'
+        },
+        {
+          label: 'Poder Judiciário',
+          value: 'Poder Judiciário'
+        },
+        {
+          label: 'Poder Legislativo',
+          value: 'Poder Legislativo'
+        }
+      ],
+      opcoes_espaco_conselheiro:[
+        {
+          label: 'Direitos',
+          value: 'Direitos'
+        },
+        {
+          label: 'Políticas Públicas',
+          value: 'Políticas Públicas'
+        }
+      ],
+      opcoes_espaco_iniciativa_privada: [
+        {
+          label: 'Prestação de Serviços',
+          value: 'Prestação de Serviços'
+        },
+        {
+          label: 'Comércio',
+          value: 'Comércio'
+        },
+        {
+          label: 'Finanças',
+          value: 'Finanças'
+        },
+        {
+          label: 'Indústria',
+          value: 'Indústria'
+        },
+        {
+          label: 'Área Rural',
+          value: 'Área Rural'
+        },
+      ],
+      opcoes_palestras:[
+        {
+          label:  'Palestra 1',
+          value:  'Palestra 1'
+        },
+        {
+          label:  'Palestra 2',
+          value:  'Palestra 2'
+        },
+        {
+          label:  'Palestra 3',
+          value:  'Palestra 3'
+        },
+        {
+          label:  'Palestra 4',
+          value:  'Palestra 4'
+        },
+        {
+          label:  'Palestra 5',
+          value:  'Palestra 5'
+        },
+        {
+          label:  'Palestra 6',
+          value:  'Palestra 6'
+        },
       ]
     };
   },
@@ -577,11 +761,12 @@ export default {
       return uid();
     },
     atribuiMetadados(metadado) {
+      this.crenenciais.id = this.geraID()
       this.credenciais.data_criacao = metadado.creationTime;
       this.credenciais.ultimo_login = metadado.lastSignInTime;
       this.credenciais.papel = "user";
     },
-    salvaFirestore(usuario) {
+    salvar(usuario) {
       let collection = this.$firebase.firestore().collection("usuarios");
       collection.add(this.credenciais);
     },
@@ -595,18 +780,19 @@ export default {
       if (credencial.password === credencial.confirme_password) return true;
     },
     criarConta() {
+      console.log(this.credenciais)
       this.loading = true;
       let compara = this.comparaSenhas(this.credenciais);
       if (compara) {
         this.$firebase
           .auth()
           .createUserWithEmailAndPassword(
-            this.credenciais.email,
+            this.credenciais.email_pessoal,
             this.credenciais.password
           )
           .then(user => {
             let usuarios = user.user;
-            this.salvaFirestore(usuarios);
+            this.salvar(usuarios);
 
             Notify.create({
               color: "positive",
@@ -618,7 +804,7 @@ export default {
           })
           .catch(error => {
             let message = error.message;
-            this.exibeAlerta(message);
+            console.log(message)
           });
       } else {
         this.exibeAlerta(message);
