@@ -1,7 +1,5 @@
 {
   "projects": {
-    "prod": "IVColoquio",
-    "vicoloquio": "vicoloquioufms",
-    "default": "vicoloquioufms"
+    "default": "ivcoloquioufms"
   }
 }

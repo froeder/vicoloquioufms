@@ -52,36 +52,12 @@ export default {
     this.contaArvores()
   },
   methods: {
-    previsao() {
-      //TODO: ARRUMAR
-      var self = this;
-      let uri =
-        "https://api.openweathermap.org/data/2.5/forecast?id=3467747&APPID=c325cf630346f14f1a73c8210bfeaf64&lang=pt&units=metric";
-      axios.get(uri).then(response => {
-        const data = response.data.list[0].main;
-        self.temperatura_maxima = data.temp_max;
-        self.temperatura_minima = data.temp_min;
-        self.descricao_tempo = response.data.list[0].weather[0].description;
-      });
-    },
     pegaUsuarioAtual() {
       // return this.$store.state.auth.user.email;
       this.usuarioLogado = LocalStorage.get.item('usuario_nome')
       this.usuarioLogadoEmail = LocalStorage.get.item('usuario_email')
     },
-    contaArvores(){
-      Firebase.firestore().collection('arvores').get().then(query =>{
-        query.forEach(doc => {
-          let dado = doc.data()
-          if(dado.ativo === 'S'){
-            this.qtde_arvore++
-            if(dado.enviado_por === this.usuarioLogadoEmail){
-              this.qtde_arvore_usuario++
-            }
-          }
-        })
-      })
-    }
+    
   }
 };
 </script>

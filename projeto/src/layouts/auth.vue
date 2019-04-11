@@ -1,5 +1,5 @@
 <template>
-  <q-layout>
+  <q-layout class="background">
 
     <q-page-container>
       <router-view />
@@ -18,8 +18,11 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-  .q-layout
-    background url('~assets/direitos.jpg') no-repeat center center fixed
-    background-size cover
+<style>
+.background{
+  background-image: url('~assets/logo.jpg') ;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
+}
 </style>

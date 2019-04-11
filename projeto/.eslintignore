@@ -1,4 +1,3 @@
 /dist
-analytics.js
-src/plugins/google-analytics.js
-src/store
+/src
+

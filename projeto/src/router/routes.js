@@ -1,18 +1,12 @@
-import Auth from 'layouts/auth'
-import AuthSignIn from 'pages/auth/sign-in'
-import CriarConta from 'pages/auth/criar-conta'
-import EsqueciSenha from 'pages/auth/esqueci-senha'
-
-import PerfilUsuario from 'pages/usuarios/PerfilUsuario'
-import EditarUsuario from 'pages/usuarios/EditarUsuario'
-import VisualizarUsuarios from 'pages/usuarios/VisualizarUsuarios'
-
 import Index from 'pages/index'
-import Sobre from 'pages/sobre'
+import Admin from 'pages/admin/admin'
+import AdminResult from 'pages/admin/result'
+import Auth from 'layouts/auth'
+import SingIn from 'pages/auth/sign-in'
+import SingUp from 'pages/auth/sign-up'
 import Default from 'layouts/default'
-import NotFound from 'pages/404'
-
-import AdminIndex from 'pages/admin/Admin'
+import DefaultAdmin from 'layouts/defaultAdmin'
+import Sobre from 'pages/sobre.vue'
 
 export default [
   { // Auth Routes
@@ -23,17 +17,12 @@ export default [
       {
         path: 'sign-in',
         name: 'signIn',
-        component: AuthSignIn
+        component: SingIn
       },
       {
-        path: 'criar-conta',
-        name: 'criarConta',
-        component: CriarConta
-      },
-      {
-        path: 'esqueci-senha',
-        name: 'esqueciSenha',
-        component: EsqueciSenha
+        path: 'sign-up',
+        name: 'signUp',
+        component: SingUp
       }
     ]
   },
@@ -44,42 +33,36 @@ export default [
     meta: { authRequired: true },
     children: [
       {
-        path: '/',
-        name: 'index',
+        path: '',
+        name: 'dashboard',
         component: Index
       },
       {
-        path: '/usuario/perfil-usuario',
-        name: 'perfil-usuario',
-        component: PerfilUsuario
-      },
-      {
-        path: '/usuario/editar-usuario/:id',
-        name: 'editar-usuario',
-        component: EditarUsuario
-      },
-      {
-        path: '/usuario/visualizar-usuarios',
-        name: 'visualizar-usuarios',
-        component: VisualizarUsuarios
-      },
-      
-      {
-        path: '/admin/index',
-        name: 'admin-index',
-        component: AdminIndex
-      },
-      {
-        path: '/sobre',
+        path: 'sobre',
         name: 'sobre',
         component: Sobre
-      },
-    
+      }
+    ]
+  },
+  { // Main Routes
+    path: '/admin',
+    component: DefaultAdmin,
+    meta: { authRequired: true },
+    children: [
+      {
+        path: 'admin',
+        name: 'admin',
+        component: Admin
+      }, {
+        path: 'result',
+        name: 'result',
+        component: AdminResult
+      }
     ]
   },
 
   { // Always leave this as last one
     path: '*',
-    component: NotFound
+    component: () => import('pages/404')
   }
 ]

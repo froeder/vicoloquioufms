@@ -1,184 +1,125 @@
 <template>
-  <q-page class="flex flex-center">
-
-    <q-card
-      class="card-sign-in q-pa-md"
-      inline
-      color="white"
-    >
-      <q-card-title
-        class="text-dark text-center"
-      >
-        Entre na sua conta
-      </q-card-title>
-
-      <form @submit.prevent="signIn()">
-        <q-card-main>
-          <q-field
-            icon="email"
-            icon-color="light"
-            class="q-mt-md"
-          >
-            <q-input
-              placeholder="Email"
-              v-model="formulario.email"
-              type="email"
-              autocomplete="username"
-            />
-          </q-field>
-
-          <q-field
-            icon="lock"
-            icon-color="light"
-            class="q-mt-lg"
-          >
-            <q-input
-              placeholder="Senha"
-              v-model="formulario.password"
-              type="password"
-              autocomplete="current-password"
-            />
-          </q-field>
-        </q-card-main>
-
-        <q-card-actions
-          align="center"
-        >
-          <div class="row gutter-xs">
-            <div class="col-xs-12 col-md-12">
-              <q-btn
-                class="full-width"
-                label="Login"
-                color="positive"
-                size="large"
-                type="submit"
-                icon="fingerprint"
-              >
-                <q-spinner v-if="loading"/>
-              </q-btn>
-            </div>
-            <div class="col-xs-12 col-md-12">
-              <q-btn
-              class="full-width"
-                label="Criar Conta"
-                color="info"
-                size="large"
-                icon="person_add"
-                @click.native="$router.replace('criar-conta')"
-              >
-              </q-btn>
-            </div>
-            <div class="col-xs-12 col-md-12">
-              <q-btn
-              class="full-width"
-                label="Esqueci Senha"
-                color="info"
-                size="large"
-                icon="help"
-                @click.native="$router.replace('esqueci-senha')"
-              >
-              </q-btn>
-            </div>
-          </div>
-        </q-card-actions>
-      </form>
-
-    </q-card>
+  <q-page padding class="flex flex-center">
+    <div>
+      <h2 style="font-family:impact ;  text-shadow: -2px 2px 3px white">IV Colóquio Estadual dos Direitos Humanos</h2>
+      <q-card color="white">
+        <q-card-title>Entre na sua conta ou cadastre-se</q-card-title>
+          <q-card-main>
+            <q-field>
+              <q-input float-label="E-mail" v-model="user.email" type="email" autocomplete="current-password" />
+            </q-field>
+            <q-field>
+              <q-input float-label="Senha" v-model="user.password" type="password" />
+            </q-field>
+            <q-btn color="green" class="full-width" @click="login(user)" style="margin-left:1em" label="Logar"><q-icon name="lock"></q-icon> </q-btn>
+            <!-- <q-btn color="green" class="full-width" v-if="user.email==='froeder3@gmail.com'"  @click="loginAdmin(user)" style="margin-left:1em" label="Login Admin"></q-btn> -->
+            <q-btn class="full-width" label="Cadastrar" color="info" @click="cadastrar()">
+              <q-spinner v-if="loading"></q-spinner><q-icon name="add_circle"></q-icon>
+            </q-btn>
+          </q-card-main>
+      </q-card>
+    </div>
 
   </q-page>
 </template>
 
 <script>
-import Firebase from "firebase";
-import { LocalStorage, SessionStorage } from "quasar";
-
-export default {
-  name: "PageSignIn",
-  data() {
-    return {
-      formulario: {
-        email: "",
-        password: ""
-      },
-      loading: true,
-      versao_banco: ""
-    };
-  },
-  created() {
-    this.loading = false;
-  },
-  methods: {
-    tipoErro(message) {
-      console.log(message)
-      if (
-        message ===
-        "The password is invalid or the user does not have a password."
-      )
-        this.$q.notify("Login Inválido!");
-      if (
-        message ===
-        "There is no user record corresponding to this identifier. The user may have been deleted."
-      )
-        this.$q.notify("E-mail não cadastrado!");
-      if (message === "The email address is badly formatted.")
-        this.$q.notify("E-mail não está no formato correto!")
-      if (
-        message ===
-        "A network error (such as timeout, interrupted connection or unreachable host) has occurred."
-      )
-      this.$q.notify("Você precisa estar conectado à internet");
-      console.error(`Not signed in: ${message}`);
-    },
-    confereUsuario(credentials) {
-      Firebase.firestore()
-        .collection("usuarios")
-        .where("email", "==", credentials.email)
-        .get()
-        .then(querySnapshop => {
-          querySnapshop.forEach(doc => {
-            let usuario = doc.data();
-
-            let user = {};
-            user.usuario = doc.data();
-            user.id = doc.id;
-
-            let usuarioB = "usuario";
-            LocalStorage.set(usuarioB, user);
-            
-                let nome = "usuario_nome";
-                LocalStorage.set(nome, usuario.nome);
-
-                let email = "usuario_email";
-                LocalStorage.set(email, usuario.email);
-
-                this.$store
-                  .dispatch("auth/signIn", credentials)
-                  .then(user => {
-                    this.loading = false;
-                  })
-                  .catch(error => {
-                    this.loading = false;
-                    this.tipoErro(error.message);
-                  });
-          
-
-          });
-        });
-    },
-    signIn() {
-      this.loading = true;
-      let credentials = {
-        email: this.formulario.email,
-        password: this.formulario.password
+  export default {
+    name: "PageSignIn",
+    data() {
+      return {
+        user: {},
+        loading: false
       };
-      this.confereUsuario(credentials);
+    },
+    created(){
+     
+    },
+    methods: {
+      cadastrar(){
+        this.$router.push('sign-up')
+        console.log('clicou')
+      },
+      login(user){
+        console.log(user)
+        user.email === 'froeder3@gmail.com' ||
+        user.email === 'eramirezmeza@gmail.com' ? this.loginAdmin(user) : this.loginUser(user)
+          
+      },
+      signIn() {
+        this.loading = true
+        let credentials = {
+          email: this.user.email,
+          password: this.user.password
+        }
+        this.$store
+          .dispatch("auth/signIn", credentials)
+          .then(user => {
+            this.$router.replace({
+              name: "dashboard"
+            });
+          })
+          .catch(error => {
+            this.loading = false
+            this.$q.notify("Invalid Login!");
+            console.error(`Not signed in: ${error.message}`);
+          });
+      },
+      loginUser(credentials) {
+        this.$store
+          .dispatch("auth/logIn", credentials)
+          .then(user => {
+            this.user.send = false
+            this.setaUserBd()
+            this.$router.replace({name: 'dashboard'});
+          })
+          .catch(error => {
+            this.$q.notify("Invalido Login!");
+            console.error(`Not signed in: ${error.message}`);
+          });
+      },
+      loginAdmin(credentials) {
+        this.$store
+          .dispatch("auth/logIn", credentials)
+          .then(user => {
+            this.$router.replace("admin/admin");
+          })
+          .catch(error => {
+            this.$q.notify("Invalid Login!");
+            console.error(`Not signed in: ${error.message}`);
+          });
+      },
+      confere(credentials) {
+        if (credentials.email === 'froeder3@gmail.com' || credentials.email === 'marcos@catalizr.com') {
+          this.loginAdmin(credentials)
+        } else {
+          this.login(credentials)
+        }
+      },
+      setaUserBd(){
+        var userSend = this.$firebase.database().ref("/usersendsingle")
+        userSend.push({
+          usuarios: this.user
+        })
+
+        var userSendGroup = this.$firebase.database().ref("/usersendgroup")
+        userSendGroup.push({
+          usuarios: this.user
+        })
+      }
     }
-  }
-};
+  };
 </script>
 
 <style lang="stylus" scoped>
+
 .card-sign-in {
   width: 80%;
+}
+.q-field{ border-radius:5px
+}
+.q-btn{
+  margin-top:1em;
+  border-radius:5px;
 }
 </style>
