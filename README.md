@@ -13,3 +13,18 @@ Devidamente cadastro o usuário consegue logar no sistema, para que assim que o 
 Além do cadastro a plataforma contará com uma área administrativa onde sera possível acompanhar a quantidade de inscritos , dados de quem está se inscrevendo e as avaliações feitas pelos usuários. Em um terceiro momento, após o encerramento do evento a plataforma contará com a exibição de relatórios dos dados tabulados e plotados em gráfico dinâmicos.
 
 O aplicativo está sendo desenvolvido de forma independente e com recursos próprios.
+
+### Build local
+
+Esse projeto tem como BaaS o Google Firebase e por isso para rodar em sua máquina, além de ter o firebase instalado, você deve criar o arquivo ``firebase.conf.js`` dentro da pasta projeto com o seguinte conteúdo:
+
+<pre>
+module.exports = {
+  apiKey: 'suaGoogleFirebaseAPI',
+  authDomain: 'seuGoogleFirebaseAuthDomain',
+  databaseURL: 'suaGoogleFirebaseURLdatabase',
+  projectId: 'seuGoogleFirebaseIdProjeto',
+  storageBucket: 'seuGoogleFirebaseStorageBucket',
+  messagingSenderId: 'seuGoogleFirebaseEnvioMensagemId'
+}
+</pre>
