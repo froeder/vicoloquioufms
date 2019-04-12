@@ -16,9 +16,9 @@ O aplicativo está sendo desenvolvido de forma independente e com recursos próp
 
 ### Build local
 
-Esse projeto tem como BaaS o Google Firebase e por isso para rodar em sua máquina, além de ter o firebase instalado, você deve criar o arquivo ``firebase.conf.js`` dentro da pasta projeto com o seguinte conteúdo:
+Esse projeto tem como BaaS o Google Firebase e por isso para rodar em sua máquina, além de ter o firebase instalado, você deve criar o arquivo ```firebase.conf.js``` dentro da pasta projeto com o seguinte conteúdo:
 
-<pre>
+```javascript
 module.exports = {
   apiKey: 'suaGoogleFirebaseAPI',
   authDomain: 'seuGoogleFirebaseAuthDomain',
@@ -27,4 +27,4 @@ module.exports = {
   storageBucket: 'seuGoogleFirebaseStorageBucket',
   messagingSenderId: 'seuGoogleFirebaseEnvioMensagemId'
 }
-</pre>
+```
