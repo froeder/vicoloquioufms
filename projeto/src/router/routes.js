@@ -1,6 +1,6 @@
 import Index from 'pages/index'
 import Admin from 'pages/admin/admin'
-import AdminResult from 'pages/admin/result'
+import AdminAvaliacoes from 'pages/admin/Avaliacoes'
 import Auth from 'layouts/auth'
 import SingIn from 'pages/auth/sign-in'
 import SingUp from 'pages/auth/sign-up'
@@ -54,9 +54,9 @@ export default [
         name: 'admin',
         component: Admin
       }, {
-        path: 'result',
-        name: 'result',
-        component: AdminResult
+        path: 'avaliacoes',
+        name: 'avaliacoes',
+        component: AdminAvaliacoes
       }
     ]
   },
