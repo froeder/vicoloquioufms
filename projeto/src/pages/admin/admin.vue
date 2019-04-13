@@ -75,7 +75,7 @@
           query.forEach(doc => {
               this.quantidade_inscricoes++
               this.tableData.push({
-                nome: doc.data().nome_completo,
+                nome: doc.data().nome_completo.toUpperCase(),
                 email: doc.data().email_pessoal,
                 categoria: 
                   doc.data().categoria_ufms !== 'Não' ? 

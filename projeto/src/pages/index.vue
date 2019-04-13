@@ -1,20 +1,11 @@
 <template>
   <q-page padding>
-    <span class="text-weight-thin">Página Inicial</span>
-    <div class="row gutter-xs">
-      <div class="col-xs-12">
-        
-          <p>Seja Bem Vindo(a) <br>
-            <small>{{usuarioLogado}}</small></p>
-
-            <br>
-            <br>
-            Em breve traremos mais informações para você.
-
-        
-      </div>
-      
-    </div>
+    <q-card>
+      <q-card-title>Seja Bem Vindo(a) <small>{{usuario.nome}}</small> </q-card-title>
+      <q-card-main>
+        Em breve traremos mais informações para você
+      </q-card-main>
+    </q-card>
   </q-page>
 </template>
 
@@ -22,40 +13,35 @@
 </style>
 
 <script>
-import Firebase from "firebase";
-import { LocalStorage } from 'quasar'
-import axios from "axios";
+import Firebase from 'firebase'
 
 export default {
   name: "PageIndex",
 
   data() {
     return {
-      loading             : false,
-      enviada             : true,
-      qtde_arvore         : 0,
-      qtde_arvore_usuario : 0,
-      usuarioLogado       : "",
-      msg                 : "Arbo+ UFMS",
-      url                 : "",
-      temperatura_maxima  : "",
-      temperatura_minima  : "",
-      descricao_tempo     : "",
-      nome                : "",
-      data                : "",
-      arvore              : [],
-      arvores             : {},
+      loading   : false,
+      usuario  : {}
     };
   },
   mounted() {
     this.pegaUsuarioAtual()
-    this.contaArvores()
   },
   methods: {
     pegaUsuarioAtual() {
-      // return this.$store.state.auth.user.email;
-      this.usuarioLogado = LocalStorage.get.item('usuario_nome')
-      this.usuarioLogadoEmail = LocalStorage.get.item('usuario_email')
+      let email = this.$store.state.auth.user.email
+      console.log(email)
+      Firebase.firestore().collection('usuarios').where('email_pessoal', '==', email).get().then(
+        query => {
+          query.forEach(doc => {
+            let dados = doc.data()
+            this.usuario = {
+              nome: dados.nome_completo
+            }
+            console.log(this.usuario)
+          })
+        }
+      )
     },
     
   }

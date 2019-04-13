@@ -818,12 +818,12 @@ export default {
     },
     contaCampos(usuario) {
       this.loading = false;
-      if (Object.keys(usuario).length >= 22) return true;
+      if (Object.keys(usuario).length >= 2) return true;
       else return false;
     },
     converterCase(){
-      this.credenciais.nome_completo = this.credenciais.nome_completo.toLowerCase()
-      this.credenciais.email_pessoal = this.credenciais.email_pessoal.toUpperCase()
+      this.credenciais.nome_completo = this.credenciais.nome_completo.toUpperCase()
+      this.credenciais.email_pessoal = this.credenciais.email_pessoal.toLowerCase()
     },
     salvar(usuario) {
       this.converterCase()
