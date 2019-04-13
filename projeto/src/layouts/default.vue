@@ -69,6 +69,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9de96', end
 .q-card{
   background-color:rgba(255, 255, 255, 0.76);border-radius:10px
 }
+.q-btn{
+  border-radius: 10px
+}
 </style>
 
 

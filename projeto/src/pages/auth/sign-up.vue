@@ -86,7 +86,7 @@
 
           <!-- Navigation for this step at the end of QStep-->
           <q-stepper-navigation>
-            <q-btn color="secondary" @click="$refs.stepper.next()" label="Continue"/>
+            <q-btn color="secondary" @click="$refs.stepper.next()">Próximo <q-icon name="arrow_forward"></q-icon></q-btn>
           </q-stepper-navigation>
         </q-step>
 
@@ -131,8 +131,8 @@
             </q-field>
           </div>
           <q-stepper-navigation>
-            <q-btn color="secondary" @click="$refs.stepper.next()" label="Próximo"/>
-            <q-btn color="secondary" flat @click="$refs.stepper.previous()" label="VOltar"/>
+            <q-btn color="secondary" @click="$refs.stepper.next()">Próximo <q-icon name="arrow_forward"></q-icon></q-btn>
+            <q-btn color="secondary" flat @click="$refs.stepper.previous()">Voltar <q-icon name="arrow_back"></q-icon></q-btn>
           </q-stepper-navigation>
         </q-step>
         <q-step name="Contato" title="Contato">
@@ -181,8 +181,8 @@
               />
             </q-field>
           <q-stepper-navigation>
-            <q-btn color="secondary" @click="$refs.stepper.next()" label="Próximo"/>
-            <q-btn color="secondary" flat @click="$refs.stepper.previous()" label="Voltar"/>
+            <q-btn color="secondary" @click="$refs.stepper.next()">Próximo <q-icon name="arrow_forward"></q-icon></q-btn>
+            <q-btn color="secondary" flat @click="$refs.stepper.previous()">Voltar <q-icon name="arrow_back"></q-icon></q-btn>
           </q-stepper-navigation>
         </q-step>
         <q-step name="fifth" title="Educação">
@@ -273,8 +273,8 @@
             
 
           <q-stepper-navigation>
-            <q-btn color="secondary" @click="$refs.stepper.next()" label="Próximo"/>
-            <q-btn color="secondary" flat @click="$refs.stepper.previous()" label="Voltar"/>
+            <q-btn color="secondary" @click="$refs.stepper.next()">Próximo <q-icon name="arrow_forward"></q-icon></q-btn>
+            <q-btn color="secondary" flat @click="$refs.stepper.previous()">Voltar <q-icon name="arrow_back"></q-icon></q-btn>
           </q-stepper-navigation>
         </q-step>
         <q-step name="sexto" title="Palestras">
@@ -312,21 +312,23 @@
 
           <q-stepper-navigation>
             <q-btn
-              class="full-width"
               label="Salvar"
               color="positive"
-              size="large"
               type="submit"
               icon="save"
             >
               <q-spinner v-if="loading"/>
             </q-btn>
-            <q-btn color="secondary" flat @click="$refs.stepper.previous()" label="Voltar"/>
+            <q-btn color="info" flat @click="$refs.stepper.previous()" label="Voltar">
+              <q-icon name="arrow_back"></q-icon>
+            </q-btn>
           </q-stepper-navigation>
         </q-step>
       </q-stepper>
       <br>
-      <q-btn to="/" class="full-width" color="primary">Voltar</q-btn>
+      <div style="padding:1em">
+        <q-btn to="/" class="full-width" color="primary"><q-icon name="arrow_back"></q-icon> Voltar</q-btn>
+      </div>
       <br>
       <br>
       </form>
@@ -342,16 +344,16 @@
 <script>
 import { uid } from "quasar";
 import { Notify } from "quasar";
-import {TheMask} from 'vue-the-mask'
+import { TheMask } from "vue-the-mask";
 
 export default {
   name: "criarConta",
-  components: {TheMask},
+  components: { TheMask },
   data() {
     return {
       minoria: [],
-      quantidade_inscricoes: 0 ,
-      qtde_inscricao : 0,
+      quantidade_inscricoes: 0,
+      qtde_inscricao: 0,
       palestra1: false,
       palestra2: false,
       palestra3: false,
@@ -362,465 +364,471 @@ export default {
         palestra1: false,
         palestra2: false,
         palestra3: false,
-        minoria:[],
+        minoria: [],
         palestras: []
       },
       loading: true,
       termo: false,
-       opcoes_sexo: [
+      opcoes_sexo: [
         {
-          label: 'Masculino',
-          value: 'Masculino'
+          label: "Masculino",
+          value: "Masculino"
         },
         {
-          label: 'Feminino',
-          value: 'Feminino'
+          label: "Feminino",
+          value: "Feminino"
         }
       ],
-      opcoes_estado_civil:[
+      opcoes_estado_civil: [
         {
-          label: 'Solteiro',
-          value: 'Solteiro'
+          label: "Solteiro",
+          value: "Solteiro"
         },
         {
-          label: 'Casado',
-          value: 'Casado'
+          label: "Casado",
+          value: "Casado"
         },
         {
-          label: 'Divorciado',
-          value: 'Divorciado'
+          label: "Divorciado",
+          value: "Divorciado"
         },
         {
-          label: 'Viúvo',
-          value: 'Viúvo'
+          label: "Viúvo",
+          value: "Viúvo"
         },
         {
-          label: 'Outro',
-          value: 'Outro'
+          label: "Outro",
+          value: "Outro"
         }
-        
       ],
-      opcoes_minoria:[
+      opcoes_minoria: [
         {
-          label: 'Nenhuma',
-          value: 'Nenhuma'
+          label: "Nenhuma",
+          value: "Nenhuma"
         },
         {
-          label: 'Imigrante',
-          value: 'Imigrante'
+          label: "Imigrante",
+          value: "Imigrante"
         },
         {
-          label: 'Pessoa Idosa',
-          value: 'Pessoa Idosa'
+          label: "Pessoa Idosa",
+          value: "Pessoa Idosa"
         },
         {
-          label: 'Diversidade Religiosa',
-          value: 'Diversidade Religiosa'
+          label: "Diversidade Religiosa",
+          value: "Diversidade Religiosa"
         },
         {
-          label: 'Negro(a)',
-          value: 'Negro(a)'
+          label: "Negro(a)",
+          value: "Negro(a)"
         },
         {
-          label: 'Mulher',
-          value: 'Mulher'
+          label: "Mulher",
+          value: "Mulher"
         },
         {
-          label: 'Adolescente',
-          value: 'Adolescente'
+          label: "Adolescente",
+          value: "Adolescente"
         },
         {
-          label: 'Pobreza',
-          value: 'Pobreza'
+          label: "Pobreza",
+          value: "Pobreza"
         },
         {
-          label: 'Indígena',
-          value: 'Indígena'
+          label: "Indígena",
+          value: "Indígena"
         },
         {
-          label: 'Homoafetivo(a)',
-          value: 'Homoafetivo(a)'
+          label: "Homoafetivo(a)",
+          value: "Homoafetivo(a)"
         },
         {
-          label: 'Portador(a) de Necessidades Especiais',
-          value: 'Portador(a) de Necessidades Especiais'
+          label: "Portador(a) de Necessidades Especiais",
+          value: "Portador(a) de Necessidades Especiais"
         }
       ],
       opcoes_escolaridade: [
         {
-          label: 'Ensino Fundamental Incompleto',
-          value: 'Ensino Fundamental Incompleto'
+          label: "Ensino Fundamental Incompleto",
+          value: "Ensino Fundamental Incompleto"
         },
         {
-          label: 'Ensino Fundamental Completo',
-          value: 'Ensino Fundamental Completo'
+          label: "Ensino Fundamental Completo",
+          value: "Ensino Fundamental Completo"
         },
         {
-          label: 'Ensino Médio Incompleto',
-          value: 'Ensino Médio Incompleto'
+          label: "Ensino Médio Incompleto",
+          value: "Ensino Médio Incompleto"
         },
         {
-          label: 'Ensino Médio Completo',
-          value: 'Ensino Médio Completo'
+          label: "Ensino Médio Completo",
+          value: "Ensino Médio Completo"
         },
         {
-          label: 'Ensino Superior Incompleto',
-          value: 'Ensino Superior Incompleto'
+          label: "Ensino Superior Incompleto",
+          value: "Ensino Superior Incompleto"
         },
         {
-          label: 'Ensino Superior Completo',
-          value: 'Ensino Superior Completo'
+          label: "Ensino Superior Completo",
+          value: "Ensino Superior Completo"
         },
         {
-          label: 'Especialização Cursando',
-          value: 'Especialização Cursando'
+          label: "Especialização Cursando",
+          value: "Especialização Cursando"
         },
         {
-          label: 'Especialização Concluído',
-          value: 'Especialização Concluído'
+          label: "Especialização Concluído",
+          value: "Especialização Concluído"
         },
         {
-          label: 'Mestrado Cursando',
-          value: 'Mestrado Cursando'
+          label: "Mestrado Cursando",
+          value: "Mestrado Cursando"
         },
         {
-          label: 'Mestrado Concluído',
-          value: 'Mestrado Concluído'
+          label: "Mestrado Concluído",
+          value: "Mestrado Concluído"
         },
         {
-          label: 'Doutorado Cursando',
-          value: 'Doutorado Cursando'
+          label: "Doutorado Cursando",
+          value: "Doutorado Cursando"
         },
         {
-          label: 'Doutorado Concluído',
-          value: 'Doutorado Concluído'
+          label: "Doutorado Concluído",
+          value: "Doutorado Concluído"
         }
       ],
-      opcoes_categoria:[
+      opcoes_categoria: [
         {
-          label: 'Estudante',
-          value: 'Estudante'
+          label: "Estudante",
+          value: "Estudante"
         },
         {
-          label: 'Professor(a)',
-          value: 'Professor(a)'
+          label: "Professor(a)",
+          value: "Professor(a)"
         },
         {
-          label: 'Gestor(a) ou Servidor(a) público(a)',
-          value: 'Gestor(a) ou Servidor(a) público(a)'
+          label: "Gestor(a) ou Servidor(a) público(a)",
+          value: "Gestor(a) ou Servidor(a) público(a)"
         },
         {
-          label: 'Conselheiro(a)',
-          value: 'Conselheiro(a)'
+          label: "Conselheiro(a)",
+          value: "Conselheiro(a)"
         },
         {
-          label: 'Iniciativa Privada',
-          value: 'Iniciativa Privada'
-        },
+          label: "Iniciativa Privada",
+          value: "Iniciativa Privada"
+        }
       ],
-      opcoes_nivel_estudante:[
+      opcoes_nivel_estudante: [
         {
-          label: 'Nível fundamental ou médio',
-          value: 'Nível fundamental ou médio'
+          label: "Nível fundamental ou médio",
+          value: "Nível fundamental ou médio"
         },
         {
-          label: 'Graduação',
-          value: 'Graduação'
+          label: "Graduação",
+          value: "Graduação"
         },
         {
-          label: 'Pós-graduação lato sensu (Especialização)',
-          value: 'Pós-graduação lato sensu (Especialização)'
+          label: "Pós-graduação lato sensu (Especialização)",
+          value: "Pós-graduação lato sensu (Especialização)"
         },
         {
-          label: 'Pós-graduação stricto sensu (Mestrado ou Doutorado)',
-          value: 'Pós-graduação stricto sensu (Mestrado ou Doutorado)'
-        },
+          label: "Pós-graduação stricto sensu (Mestrado ou Doutorado)",
+          value: "Pós-graduação stricto sensu (Mestrado ou Doutorado)"
+        }
       ],
       opcoes_nivel_professor: [
         {
-          label: 'Ensino fundamental',
-          value: 'Ensino fundamental',
+          label: "Ensino fundamental",
+          value: "Ensino fundamental"
         },
         {
-          label: 'Ensino médio',
-          value: 'Ensino médio',
+          label: "Ensino médio",
+          value: "Ensino médio"
         },
         {
-          label: 'Ensino superior',
-          value: 'Ensino superior',
+          label: "Ensino superior",
+          value: "Ensino superior"
         }
       ],
       opcoes_nivel_gestor: [
         {
-          label: 'Municipal',
-          value: 'Municipal'
+          label: "Municipal",
+          value: "Municipal"
         },
         {
-          label: 'Estadual',
-          value: 'Estadual'
+          label: "Estadual",
+          value: "Estadual"
         },
         {
-          label: 'Federal',
-          value: 'Federal'
+          label: "Federal",
+          value: "Federal"
         }
       ],
       opcoes_nivel_conselheiro: [
         {
-          label: 'Municipal',
-          value: 'Municipal'
+          label: "Municipal",
+          value: "Municipal"
         },
         {
-          label: 'Estadual',
-          value: 'Estadual'
+          label: "Estadual",
+          value: "Estadual"
         },
         {
-          label: 'Federal',
-          value: 'Federal'
+          label: "Federal",
+          value: "Federal"
         }
       ],
       opcoes_nivel_iniciativa_privada: [
         {
-          label: 'Trabalhador(a)',
-          value: 'Trabalhador(a)'
+          label: "Trabalhador(a)",
+          value: "Trabalhador(a)"
         },
         {
-          label: 'Empresário',
-          value: 'Empresário'
+          label: "Empresário",
+          value: "Empresário"
         },
         {
-          label: 'Autônomo(a)',
-          value: 'Autônomo(a)'
+          label: "Autônomo(a)",
+          value: "Autônomo(a)"
         },
         {
-          label: 'Profissional Liberal',
-          value: 'Profissional Liberal'
+          label: "Profissional Liberal",
+          value: "Profissional Liberal"
         }
       ],
       opcoes_espaco_estudante: [
         {
-          label: 'Escola pública',
-          value: 'Escola pública'
+          label: "Escola pública",
+          value: "Escola pública"
         },
         {
-          label: 'Escola particular',
-          value: 'Escola particular'
+          label: "Escola particular",
+          value: "Escola particular"
         },
         {
-          label: 'Outra',
-          value: 'Outra'
+          label: "Outra",
+          value: "Outra"
         },
         {
-          label: 'Outra Universidade pública',
-          value: 'Outra Universidade pública'
+          label: "Outra Universidade pública",
+          value: "Outra Universidade pública"
         },
         {
-          label: 'Faculdade ou universidade particular',
-          value: 'Faculdade ou universidade particular'
-        },
+          label: "Faculdade ou universidade particular",
+          value: "Faculdade ou universidade particular"
+        }
       ],
       opcoes_espaco_professor: [
         {
-          label: 'Escola pública',
-          value: 'Escola pública'
+          label: "Escola pública",
+          value: "Escola pública"
         },
         {
-          label: 'Escola particular',
-          value: 'Escola particular'
+          label: "Escola particular",
+          value: "Escola particular"
         },
         {
-          label: 'Outra',
-          value: 'Outra'
+          label: "Outra",
+          value: "Outra"
         },
         {
-          label: 'Outra Universidade pública',
-          value: 'Outra Universidade pública'
+          label: "Outra Universidade pública",
+          value: "Outra Universidade pública"
         },
         {
-          label: 'Faculdade ou universidade particular',
-          value: 'Faculdade ou universidade particular'
-        },
+          label: "Faculdade ou universidade particular",
+          value: "Faculdade ou universidade particular"
+        }
       ],
       opcoes_espaco_gestor: [
         {
-          label: 'Educação',
-          value: 'Educação'
+          label: "Educação",
+          value: "Educação"
         },
         {
-          label: 'Saúde',
-          value: 'Saúde'
+          label: "Saúde",
+          value: "Saúde"
         },
         {
-          label: 'Trabalho',
-          value: 'Trabalho'
+          label: "Trabalho",
+          value: "Trabalho"
         },
         {
-          label: 'Esporte e Lazer',
-          value: 'Esporte e Lazer'
+          label: "Esporte e Lazer",
+          value: "Esporte e Lazer"
         },
         {
-          label: 'Cultura',
-          value: 'Cultura'
+          label: "Cultura",
+          value: "Cultura"
         },
         {
-          label: 'Assistência Social',
-          value: 'Assistência Social'
+          label: "Assistência Social",
+          value: "Assistência Social"
         },
         {
-          label: 'Meio Ambiente',
-          value: 'Meio Ambiente'
+          label: "Meio Ambiente",
+          value: "Meio Ambiente"
         },
         {
-          label: 'Moradia',
-          value: 'Moradia'
+          label: "Moradia",
+          value: "Moradia"
         },
         {
-          label: 'Transporte',
-          value: 'Transporte'
+          label: "Transporte",
+          value: "Transporte"
         },
         {
-          label: 'Direitos Humanos',
-          value: 'Direitos Humanos'
+          label: "Direitos Humanos",
+          value: "Direitos Humanos"
         },
         {
-          label: 'Forças Armadas',
-          value: 'Forças Armadas'
+          label: "Forças Armadas",
+          value: "Forças Armadas"
         },
         {
-          label: 'Segurança Pública',
-          value: 'Segurança Pública'
+          label: "Segurança Pública",
+          value: "Segurança Pública"
         },
         {
-          label: 'Poder Judiciário',
-          value: 'Poder Judiciário'
+          label: "Poder Judiciário",
+          value: "Poder Judiciário"
         },
         {
-          label: 'Poder Legislativo',
-          value: 'Poder Legislativo'
+          label: "Poder Legislativo",
+          value: "Poder Legislativo"
         }
       ],
-      opcoes_espaco_conselheiro:[
+      opcoes_espaco_conselheiro: [
         {
-          label: 'Direitos',
-          value: 'Direitos'
+          label: "Direitos",
+          value: "Direitos"
         },
         {
-          label: 'Políticas Públicas',
-          value: 'Políticas Públicas'
+          label: "Políticas Públicas",
+          value: "Políticas Públicas"
         }
       ],
       opcoes_espaco_iniciativa_privada: [
         {
-          label: 'Prestação de Serviços',
-          value: 'Prestação de Serviços'
+          label: "Prestação de Serviços",
+          value: "Prestação de Serviços"
         },
         {
-          label: 'Comércio',
-          value: 'Comércio'
+          label: "Comércio",
+          value: "Comércio"
         },
         {
-          label: 'Finanças',
-          value: 'Finanças'
+          label: "Finanças",
+          value: "Finanças"
         },
         {
-          label: 'Indústria',
-          value: 'Indústria'
+          label: "Indústria",
+          value: "Indústria"
         },
         {
-          label: 'Área Rural',
-          value: 'Área Rural'
-        },
+          label: "Área Rural",
+          value: "Área Rural"
+        }
       ],
-      opcoes_palestras:[
+      opcoes_palestras: [
         {
-          label:  'Palestra 1',
-          value:  'Palestra 1'
+          label: "Palestra 1",
+          value: "Palestra 1"
         },
         {
-          label:  'Palestra 2',
-          value:  'Palestra 2'
+          label: "Palestra 2",
+          value: "Palestra 2"
         },
         {
-          label:  'Palestra 3',
-          value:  'Palestra 3'
+          label: "Palestra 3",
+          value: "Palestra 3"
         },
         {
-          label:  'Palestra 4',
-          value:  'Palestra 4'
+          label: "Palestra 4",
+          value: "Palestra 4"
         },
         {
-          label:  'Palestra 5',
-          value:  'Palestra 5'
+          label: "Palestra 5",
+          value: "Palestra 5"
         },
         {
-          label:  'Palestra 6',
-          value:  'Palestra 6'
-        },
+          label: "Palestra 6",
+          value: "Palestra 6"
+        }
       ],
-      opcoes_ufms:[
+      opcoes_ufms: [
         {
-          label : 'Não',
-          value : 'Não'
+          label: "Não",
+          value: "Não"
         },
         {
-          label: 'Estudante de Graduação',
-          value: 'Estudante de Graduação'
+          label: "Estudante de Graduação",
+          value: "Estudante de Graduação"
         },
         {
-          label: 'Estudante de Pós-graduação Lato Sensu',
-          value: 'Estudante de Pós-graduação Lato Sensu'
+          label: "Estudante de Pós-graduação Lato Sensu",
+          value: "Estudante de Pós-graduação Lato Sensu"
         },
         {
-          label: 'Estudante de Pós-graduação Stricto Sensu',
-          value: 'Estudante de Pós-graduação Stricto Sensu'
+          label: "Estudante de Pós-graduação Stricto Sensu",
+          value: "Estudante de Pós-graduação Stricto Sensu"
         },
         {
-          label: 'Servidor Docente',
-          value: 'Servidor Docente'
+          label: "Servidor Docente",
+          value: "Servidor Docente"
         },
         {
-          label: 'Servidor Técnico Administrativo',
-          value: 'Servidor Técnico Administrativo'
+          label: "Servidor Técnico Administrativo",
+          value: "Servidor Técnico Administrativo"
         },
         {
-          label: 'Terceirizado',
-          value: 'Terceirizado'
+          label: "Terceirizado",
+          value: "Terceirizado"
         }
       ]
     };
   },
   created() {
-    this.loading = false
+    this.loading = false;
   },
-  mounted(){
-    this.contaUsuarios()
+  mounted() {
+    this.contaUsuarios();
   },
   methods: {
     geraID() {
       return uid();
     },
     atribuiMetadados(metadado) {
-      this.crenenciais.id = this.geraID()
+      this.crenenciais.id = this.geraID();
       this.credenciais.data_criacao = metadado.creationTime;
       this.credenciais.ultimo_login = metadado.lastSignInTime;
       this.credenciais.papel = "user";
     },
-    contaUsuarios(){
-      this.$firebase.firestore().collection('usuarios').get().then(query =>{
-        query.forEach(doc => {
-            this.qtde_inscricao++
-        })
-      })
+    contaUsuarios() {
+      this.$firebase
+        .firestore()
+        .collection("usuarios")
+        .get()
+        .then(query => {
+          query.forEach(doc => {
+            this.qtde_inscricao++;
+          });
+        });
     },
-    contaCampos(usuario){
-      this.loading = false
-      if(Object.keys(usuario).length >= 22) 
-        return true
-      else 
-        return false
+    contaCampos(usuario) {
+      this.loading = false;
+      if (Object.keys(usuario).length >= 22) return true;
+      else return false;
+    },
+    converterCase(){
+      this.credenciais.nome_completo = this.credenciais.nome_completo.toLowerCase()
+      this.credenciais.email_pessoal = this.credenciais.email_pessoal.toUpperCase()
     },
     salvar(usuario) {
-      let collection = this.$firebase.firestore().collection("usuarios")
-      collection.add(this.credenciais)
+      this.converterCase()
+      let collection = this.$firebase.firestore().collection("usuarios");
+      collection.add(this.credenciais);
     },
     exibeAlerta(message) {
       if (message === "Password should be at least 6 characters")
@@ -829,23 +837,21 @@ export default {
       this.loading = false;
     },
     comparaSenhas(credencial) {
-      this.loading = false
+      this.loading = false;
       if (credencial.password === credencial.confirme_password) return true;
     },
-    validaQuantidade(){
-      this.contaUsuarios()
-      if(this.quantidade_inscricoes <= 300)
-        return true 
-       else 
-        return false 
+    validaQuantidade() {
+      this.contaUsuarios();
+      if (this.quantidade_inscricoes <= 300) return true;
+      else return false;
     },
     criarConta() {
-      console.log(this.credenciais)
+      console.log(this.credenciais);
       this.loading = true;
       let compara = this.comparaSenhas(this.credenciais);
       if (compara) {
-        if(this.contaCampos(this.credenciais)){
-          if(this.validaQuantidade()){
+        if (this.contaCampos(this.credenciais)) {
+          if (this.validaQuantidade()) {
             this.$firebase
               .auth()
               .createUserWithEmailAndPassword(
@@ -866,13 +872,15 @@ export default {
               })
               .catch(error => {
                 let message = error.message;
-                this.exibeAlerta(message)
-                console.log(message)
+                this.exibeAlerta(message);
+                console.log(message);
               });
           } else {
-            this.$q.notify("Inscrições encerradas. Envie um e-mail para solicitando a abertura de novas vagas.");
+            this.$q.notify(
+              "Inscrições encerradas. Envie um e-mail para solicitando a abertura de novas vagas."
+            );
           }
-        }else{
+        } else {
           this.$q.notify("Faltam Campos");
         }
       } else {
