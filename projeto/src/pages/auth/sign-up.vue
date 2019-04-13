@@ -301,7 +301,7 @@
           </div><br><br>
 
           <div>
-            25/04 - segunda metade da manhã  <br>
+            24/04 - segunda metade da manhã  <br>
             <strong>Painel 2: Direitos Humanos, Psicologia e Comunicação</strong>  <br>
             Profª Drª Lívia Gaigher Bósio Campello  <br>
             Profª Maª Sandra Maria Francisco de Amorim  <br>
