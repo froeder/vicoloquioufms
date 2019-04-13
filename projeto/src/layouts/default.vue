@@ -30,7 +30,9 @@
     </q-layout-drawer>
 
     <q-page-container>
+      <q-slide-transition appear enter="fadeInRight" leave="fadeInRight" mode="fadeInRight">
       <router-view />
+      </q-slide-transition>
     </q-page-container>
 
     <q-layout-footer style="background-color:#9CDF52 ; heigth:1em">

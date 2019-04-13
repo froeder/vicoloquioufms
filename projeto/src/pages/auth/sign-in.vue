@@ -1,26 +1,24 @@
 <template>
   <q-page padding class="flex flex-center">
-    <div>
-      <h2 style="font-family:impact ;  text-shadow: -2px 2px 3px white">IV Colóquio Estadual dos Direitos Humanos</h2>
-      <q-card color="white">
-        <q-card-title>Entre na sua conta ou cadastre-se</q-card-title>
-          <q-card-main>
-            <q-field>
-              <q-input float-label="E-mail" v-model="user.email" type="email" autocomplete="current-password" />
-            </q-field>
-            <q-field>
-              <q-input float-label="Senha" v-model="user.password" type="password" />
-            </q-field>
-            <q-layout class="col-xs-12">
-              <q-btn color="green" class="full-width" @click="login(user)" style="margin-left:1em" label="Logar"><q-icon name="lock"></q-icon> </q-btn>
-              <!-- <q-btn color="green" class="full-width" v-if="user.email==='froeder3@gmail.com'"  @click="loginAdmin(user)" style="margin-left:1em" label="Login Admin"></q-btn> -->
-              <q-btn class="full-width" label="Cadastrar" color="info" @click="cadastrar()">
-                <q-spinner v-if="loading"></q-spinner><q-icon name="add_circle"></q-icon>
-              </q-btn>
-            </q-layout>
-          </q-card-main>
-      </q-card>
-    </div>
+    <h2 style="font-family:impact ;  text-shadow: -2px 2px 3px white">IV Colóquio Estadual dos Direitos Humanos</h2>
+    <q-card color="white">
+      <q-card-title>Entre na sua conta ou cadastre-se</q-card-title>
+        <q-card-main>
+          <q-field>
+            <q-input float-label="E-mail" v-model="user.email" type="email" autocomplete="current-password" />
+          </q-field>
+          <q-field>
+            <q-input float-label="Senha" v-model="user.password" type="password" />
+          </q-field>
+          <q-layout class="col-xs-12">
+            <q-btn color="green" class="full-width" @click="login(user)" style="margin-left:1em" label="Logar"><q-icon name="lock"></q-icon> </q-btn>
+            <!-- <q-btn color="green" class="full-width" v-if="user.email==='froeder3@gmail.com'"  @click="loginAdmin(user)" style="margin-left:1em" label="Login Admin"></q-btn> -->
+            <q-btn class="full-width" label="Cadastrar" color="info" @click="cadastrar()">
+              <q-spinner v-if="loading"></q-spinner><q-icon name="add_circle"></q-icon>
+            </q-btn>
+          </q-layout>
+        </q-card-main>
+    </q-card>
 
   </q-page>
 </template>
