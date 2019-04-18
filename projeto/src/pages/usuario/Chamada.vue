@@ -70,6 +70,14 @@ export default {
             )
              
         },
+        chamadaPalestra(cod_palestra){
+            let palestra = Firebase.firestore().collection(cod_palestra);
+                palestra.add({
+                    nome: this.usuario.nome_completo,
+                    email: this.usuario.email_pessoal,
+                    cpf: this.usuario.cpf
+                });
+        },
         validaCodigo(codigo, palestra){
             if(palestra === 'palestra1'){
                 if(codigo === this.codigos.palestra1){
@@ -79,6 +87,7 @@ export default {
                             .collection("usuarios")
                             .doc(this.doc_id)
                         collection.update({presenca_palestra1 : true})
+                        this.chamadaPalestra('palestra1')
                     return true
                 } else return false
             }
@@ -90,6 +99,7 @@ export default {
                             .collection("usuarios")
                             .doc(this.doc_id)
                         collection.update({presenca_palestra2 : true})
+                        this.chamadaPalestra('palestra2')
                     return true
                 } else return false
             }
@@ -101,6 +111,7 @@ export default {
                             .collection("usuarios")
                             .doc(this.doc_id)
                         collection.update({presenca_palestra3 : true})
+                        this.chamadaPalestra('palestra3')
                     return true
                 } else return false
             }

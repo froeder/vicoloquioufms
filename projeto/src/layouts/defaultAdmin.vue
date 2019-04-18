@@ -32,7 +32,10 @@
         <q-item :to="'admin'">
           <q-item-main>Home</q-item-main>
         </q-item>
-        <q-item :to="'avaliacoes'">
+        <q-item :to="{ name: 'presencas' }">
+          <q-item-main>Presenças</q-item-main>
+        </q-item>
+        <q-item :to="{ name: 'avaliacoes' }">
           <q-item-main>Avaliacoes</q-item-main>
         </q-item>
         <q-item @click.native="signOut()">

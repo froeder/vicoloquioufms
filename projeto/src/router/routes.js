@@ -10,6 +10,7 @@ import Sobre from 'pages/sobre.vue'
 import PerfilUsuario from 'pages/usuario/PerfilUsuario'
 import RegistrarChamada from 'pages/usuario/Chamada'
 import RealizarAvaliacao from 'pages/usuario/Avaliar'
+import AdminPresencas from 'pages/admin/Presencas'
 
 export default [
   { // Auth Routes
@@ -71,10 +72,16 @@ export default [
         path: 'admin',
         name: 'admin',
         component: Admin
-      }, {
+      }, 
+      {
         path: 'avaliacoes',
         name: 'avaliacoes',
         component: AdminAvaliacoes
+      }, 
+      {
+        path: 'presencas',
+        name: 'presencas',
+        component: AdminPresencas
       }
     ]
   },
