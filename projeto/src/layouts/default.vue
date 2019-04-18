@@ -9,6 +9,15 @@
         <q-toolbar-title>
           IV Colóquio
         </q-toolbar-title>
+        <q-btn
+          flat
+          dense
+          round
+          to="usuario/perfil"
+          aria-label="Person"
+        >
+          <q-icon name="person" />
+        </q-btn>
       </q-toolbar>
     </q-layout-header>
 

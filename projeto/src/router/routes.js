@@ -7,6 +7,7 @@ import SingUp from 'pages/auth/sign-up'
 import Default from 'layouts/default'
 import DefaultAdmin from 'layouts/defaultAdmin'
 import Sobre from 'pages/sobre.vue'
+import PerfilUsuario from 'pages/usuario/PerfilUsuario'
 
 export default [
   { // Auth Routes
@@ -36,6 +37,11 @@ export default [
         path: '',
         name: 'dashboard',
         component: Index
+      },
+      {
+        path: '/usuario/perfil',
+        name: 'perfil',
+        component: PerfilUsuario
       },
       {
         path: 'sobre',
