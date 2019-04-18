@@ -13,7 +13,7 @@
           flat
           dense
           round
-          to="usuario/perfil"
+          :to="{ name: 'perfil' }"
           aria-label="Person"
         >
           <q-icon name="person" />
@@ -27,7 +27,12 @@
         <q-item :to="{ name: 'dashboard' }">
           <q-item-main>Home</q-item-main>
         </q-item>
-        
+        <q-item :to="{ name: 'chamada' }">
+          <q-item-main>Chamada</q-item-main>
+        </q-item>
+        <q-item :to="{ name: 'avaliar' }">
+          <q-item-main>Avaliar</q-item-main>
+        </q-item>
         <q-item :to="{ name: 'sobre' }">
           <q-item-main>Sobre</q-item-main>
         </q-item>

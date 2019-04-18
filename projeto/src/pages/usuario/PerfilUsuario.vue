@@ -110,18 +110,16 @@
               <br>
               <q-input float-label="Telefone" v-model="usuario.telefone" type="text"/>
             </q-field>
-            <q-field class="q-mt-md col-xs-12">
+            <q-field class="hidden q-mt-md col-xs-12">
               <q-input
                 float-label="E-mail pessoal"
                 v-model="usuario.email_pessoal"
                 type="email"
               />
-              <small>(Será usado para fazer login)</small>
             </q-field>
             <br>
             <br>
-            <br>Senha para usar o sistema:
-            <q-field class="q-mt-lg col-xs-12">
+            <q-field hidden class="hidden q-mt-lg col-xs-12">
               <q-input
                 float-label="Senha"
                 v-model="usuario.password"
@@ -129,7 +127,7 @@
                 autocomplete="current-password"
               />
             </q-field>
-            <q-field class="q-mt-lg col-xs-12">
+            <q-field class="hidden q-mt-lg col-xs-12">
               <q-input
                 float-label="Redigite a Senha"
                 v-model="usuario.confirme_password"
@@ -778,11 +776,11 @@ export default {
             .doc(this.doc_id)
         collection.update(usuario).then(
             Notify.create({
-            color: "positive",
-            position: "bottom",
-            message: "Usuário atualizado",
-            icon: "thumb_up",
-            timeout: 2000
+              color: "positive",
+              position: "bottom",
+              message: "Usuário atualizado",
+              icon: "thumb_up",
+              timeout: 2000
             })
         );
     },

@@ -8,6 +8,8 @@ import Default from 'layouts/default'
 import DefaultAdmin from 'layouts/defaultAdmin'
 import Sobre from 'pages/sobre.vue'
 import PerfilUsuario from 'pages/usuario/PerfilUsuario'
+import RegistrarChamada from 'pages/usuario/Chamada'
+import RealizarAvaliacao from 'pages/usuario/Avaliar'
 
 export default [
   { // Auth Routes
@@ -42,6 +44,16 @@ export default [
         path: '/usuario/perfil',
         name: 'perfil',
         component: PerfilUsuario
+      },
+      {
+        path: '/usuario/chamada',
+        name: 'chamada',
+        component: RegistrarChamada
+      },
+      {
+        path: '/usuario/avaliar',
+        name: 'avaliar',
+        component: RealizarAvaliacao
       },
       {
         path: 'sobre',
