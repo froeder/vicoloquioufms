@@ -96,7 +96,9 @@ module.exports = function (ctx) {
         'QAutocomplete',
         'QFab',
         'QPageSticky',
-        'QDatetimePicker'
+        'QDatetimePicker',
+        'QSlider',
+        'QAlert'
       ],
       directives: [
         'Ripple'
