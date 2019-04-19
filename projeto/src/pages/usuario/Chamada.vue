@@ -48,6 +48,9 @@ export default {
     mounted(){
         this.pegarPalestras()
         this.pegaCodigos()
+        this.pegarPresenca('palestra1')
+        this.pegarPresenca('palestra2')
+        this.pegarPresenca('palestra3')
     },
     methods:{
         pegarPalestras() {
@@ -135,8 +138,24 @@ export default {
                     timeout: 2000
                 })
             }
-            
-        }
+        },
+        pegarPresenca(palestra){
+            Firebase.firestore().collection(palestra).where('email', '==', this.email).get().then(
+                query => {
+                    query.forEach(doc => {
+                        if(palestra === 'palestra1'){
+                            this.presente_palestra1 = true
+                        } 
+                        if(palestra == 'palestra2'){
+                            this.presente_palestra2 = true
+                        }
+                        if(palestra === 'palestra3'){
+                            this.presente_palestra3 = true
+                        }
+                    })
+                }
+            )
+        },
     }
 }
 </script>

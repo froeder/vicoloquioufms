@@ -434,6 +434,46 @@
                 <q-btn color="positive" class="full-width" @click="salvarAvaliacao(painel2, 'painel2')">Enviar Avaliação</q-btn>
             </q-card-actions>
         </q-card>
+        <br>
+        <div v-if="enviada_geral == false && usuario.avaliou_geral != true">
+            <q-card v-if="presente_palestra1 == true || presente_palestra2 == true || presente_palestra3 == true">
+                <q-card-title>
+                    <strong>Avaliação geral: </strong>
+                    considerando suas experiências e suas expectativas pessoais, profissionais e acadêmicas com relação ao tema dos direitos humanos, apresente-nos seus comentários e sugestões:
+                </q-card-title>
+                <q-card-main>
+                    <q-field>
+                        Aspectos Positivos do IV Colóquio Estadual de Direitos Humanos:
+                        <q-input
+                            v-model="avaliacao_geral.questao1"
+                            type="textarea"
+                            float-label="Texto Livre"
+                        />
+                    </q-field>
+                    <br>
+                    <q-field>
+                        Aspectos a serem melhorados para as próximas edições do Colóquio Estadual de Direitos Humanos:
+                        <q-input
+                            v-model="avaliacao_geral.questao2"
+                            type="textarea"
+                            float-label="Texto Livre"
+                        />
+                    </q-field>
+                    <br>
+                    <q-field>
+                        Tema(s) que poderia(m) ser abordado(s) e/ou palestrante(s) que poderiam ser convidados nas próximas edições:
+                        <q-input
+                            v-model="avaliacao_geral.questao3"
+                            type="textarea"
+                            float-label="Texto Livre"
+                        />
+                    </q-field>
+                </q-card-main>
+                <q-card-actions>
+                    <q-btn color="positive" class="full-width" @click="salvarAvaliacao(avaliacao_geral, 'avaliacao_geral')">Enviar Avaliação</q-btn>
+                </q-card-actions>
+            </q-card>
+        </div>
     </q-page>
 </template>
 
@@ -448,25 +488,32 @@ export default {
             doc_id : '',
             usuario:'',
             email: this.$store.state.auth.user.email,
-            avaliacao1:{},
+            avaliacao1:{
+                email: this.$store.state.auth.user.email
+            },
             painel1:{
                 palestra1: {},
                 palestra2: {},
-                palestra3: {}
+                palestra3: {},
+                email: this.$store.state.auth.user.email
             },
             painel2:{
                 palestra1: {},
                 palestra2: {},
                 palestra3: {},
-                palestra4: {}
+                palestra4: {},
+                email: this.$store.state.auth.user.email
             },
-            avaliacao3:{},
+            avaliacao_geral:{
+                email: this.$store.state.auth.user.email
+            },
             presente_palestra1 : false,
             presente_palestra2 : false,
             presente_palestra3 : false,
             enviada_palestra1: false,
             enviada_palestra2: false,
             enviada_palestra3: false,
+            enviada_geral: false
         }
     },
     mounted(){
@@ -538,7 +585,16 @@ export default {
                     .collection("usuarios")
                     .doc(this.doc_id)
                 collection.update({avaliou_palestra3 : true})
-                this.enviada_palestra1 = true
+                this.enviada_palestra3 = true
+            }
+            if(banco === 'avaliacao_geral'){
+                let collection = 
+                Firebase
+                    .firestore()
+                    .collection("usuarios")
+                    .doc(this.doc_id)
+                collection.update({avaliou_geral : true})
+                this.enviada_geral = true
             }
         },
         salvarAvaliacao(avaliacao, banco){
