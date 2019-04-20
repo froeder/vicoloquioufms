@@ -153,7 +153,7 @@ module.exports = function (ctx) {
       }
     },
     cordova: {
-      // id: 'org.cordova.quasar.app'
+      // id: 'org.froeder.ivcoloquio.app'
     },
     electron: {
       // bundler: 'builder', // or 'packager'

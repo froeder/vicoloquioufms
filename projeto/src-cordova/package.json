@@ -1,5 +1,5 @@
 {
-    "name": "org.cordova.quasar.app",
+    "name": "org.froeder.ivcoloquio.app",
     "displayName": "IV Colóquio",
     "version": "1.0.0",
     "description": "A sample Apache Cordova application that responds to the deviceready event.",

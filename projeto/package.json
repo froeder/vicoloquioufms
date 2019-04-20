@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "IV Colóquio dos Direitos Humanos",
   "productName": "IV Colóquio",
-  "cordovaId": "org.cordova.quasar.app",
+  "cordovaId": "org.froeder.ivcoloquio.app",
   "author": "Jhonatan Froeder",
   "private": true,
   "scripts": {
