@@ -49,7 +49,7 @@
       <router-view />
     </q-page-container>
 
-    <q-layout-footer style="background-color:#9CDF52 ; heigth:1em">
+    <q-layout-footer style="background-color:#00A34F ; heigth:1em">
       Desenvolvido por <a target="_blank" href="http://froeder.github.io">Jhonatan Froeder</a>
     </q-layout-footer>
   </q-layout>
