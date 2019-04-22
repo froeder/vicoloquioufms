@@ -3,21 +3,21 @@
         <q-card>
             <q-card-title>Registrar Presença</q-card-title>
             <q-card-main>
-                <q-field v-if="usuario.palestra1">
+                <q-field v-if="usuario.palestra1 == true">
                     Palestra Magna
                     <q-input v-model="codigo_palestra1" placeholder="Digite o código"></q-input>
                     <br>
                     <q-btn color="positive" class="full-width" @click="registraPresenca(codigo_palestra1, 'palestra1')">Registrar</q-btn>
                 </q-field>
                 <br>
-                <q-field v-if="usuario.palestra2">
+                <q-field v-if="usuario.palestra2 == true">
                     Painel 1
                     <q-input v-model="codigo_palestra2" placeholder="Digite o código"></q-input>
                     <br>
                     <q-btn color="positive" class="full-width" @click="registraPresenca(codigo_palestra2, 'palestra2')">Registrar</q-btn>
                 </q-field>
                 <br>
-                <q-field v-if="usuario.palestra3">
+                <q-field v-if="usuario.palestra3 == true">
                     Painel 2
                     <q-input v-model="codigo_palestra3" placeholder="Digite o código"></q-input>
                     <br>

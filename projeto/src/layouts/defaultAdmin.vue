@@ -38,6 +38,9 @@
         <q-item :to="{ name: 'avaliacoes' }">
           <q-item-main>Avaliacoes</q-item-main>
         </q-item>
+        <q-item :to="{name: 'sorteio'}">
+          <q-item-main>Sorteio</q-item-main>
+        </q-item>
         <q-item @click.native="signOut()">
           <q-item-main>Sign Out</q-item-main>
         </q-item>

@@ -11,6 +11,7 @@ import PerfilUsuario from 'pages/usuario/PerfilUsuario'
 import RegistrarChamada from 'pages/usuario/Chamada'
 import RealizarAvaliacao from 'pages/usuario/Avaliar'
 import AdminPresencas from 'pages/admin/Presencas'
+import AdminSorteio from 'pages/admin/Sorteio'
 
 export default [
   { // Auth Routes
@@ -82,6 +83,11 @@ export default [
         path: 'presencas',
         name: 'presencas',
         component: AdminPresencas
+      },
+      {
+        path: 'sorteio',
+        name: 'sorteio',
+        component: AdminSorteio
       }
     ]
   },
