@@ -14,7 +14,7 @@
             color="secondary"
             :pagination.sync="paginationControl"
         />
-        <p>Inscritos: {{qtde_inscritos_p1}} Presentes: {{qtde_presentes_p1}}</p>
+        <q-chip color="info"> Inscritos: {{qtde_inscritos_p1}} Presentes: {{qtde_presentes_p1}} </q-chip>
            
         <q-table
             title="Painel 1"
@@ -30,7 +30,7 @@
             color="secondary"
             :pagination.sync="paginationControl"
         />
-        <p>Inscritos: {{qtde_inscritos_p2}} Presentes: {{qtde_presentes_p2}}</p>
+        <q-chip color="info"> Inscritos: {{qtde_inscritos_p2}} Presentes: {{qtde_presentes_p2}}</q-chip>
 
         <q-table
             title="Painel 2"
@@ -46,7 +46,7 @@
             color="secondary"
             :pagination.sync="paginationControl"
         />
-        <p>Inscritos: {{qtde_inscritos_p3}} Presentes: {{qtde_presentes_p3}}</p>
+        <q-chip color="info">  Inscritos: {{qtde_inscritos_p3}} Presentes: {{qtde_presentes_p3}}</q-chip>
     </q-page>
 </template>
 

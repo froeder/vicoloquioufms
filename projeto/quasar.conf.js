@@ -98,7 +98,8 @@ module.exports = function (ctx) {
         'QPageSticky',
         'QDatetimePicker',
         'QSlider',
-        'QAlert'
+        'QAlert',
+        'QChip'
       ],
       directives: [
         'Ripple'

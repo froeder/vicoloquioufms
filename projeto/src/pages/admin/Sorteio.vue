@@ -8,7 +8,7 @@
                 <q-btn color="positive" class="full-width" @click="sortear(usuarios)">Sortear</q-btn>
                 <br>
                 <br>
-                <p>{{vencedor.nome_completo.toUpperCase()}}</p>
+                <p>{{vencedor.nome_completo}}</p>
             </q-card-main>
         </q-card>
     </q-page>
