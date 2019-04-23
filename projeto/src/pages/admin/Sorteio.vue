@@ -8,7 +8,7 @@
                 <q-btn color="positive" class="full-width" @click="sortear(usuarios)">Sortear</q-btn>
                 <br>
                 <br>
-                <p>{{vencedor.nome_completo}}</p>
+                <p>{{vencedor.nome}}</p>
             </q-card-main>
         </q-card>
     </q-page>
@@ -29,7 +29,7 @@ export default {
     },
     methods:{
         baixarUsuarios(){
-            Firebase.firestore().collection('usuarios').get().then(
+            Firebase.firestore().collection('sorteio').get().then(
                 query => {
                     query.forEach( doc => {
                         this.usuarios.push(doc.data())

@@ -122,6 +122,9 @@ export default {
         },
         registraPresenca(codigo, palestra){
             if(this.validaCodigo(codigo, palestra)){
+                // console.log(this.usuario)
+                let nome = this.usuario.nome_completo
+                Firebase.firestore().collection('sorteio').add({nome: nome.toUpperCase()})
                 Notify.create({
                     color: "positive",
                     position: "bottom",
