@@ -3,21 +3,21 @@
         <q-card>
             <q-card-title>Registrar Presença</q-card-title>
             <q-card-main>
-                <q-field v-if="usuario.palestra1 == true">
+                <q-field v-if="usuario.palestra1 == true && presente_palestra1 != true && usuario.presenca_palestra1 != true">
                     Palestra Magna
                     <q-input v-model="codigo_palestra1" placeholder="Digite o código"></q-input>
                     <br>
                     <q-btn color="positive" class="full-width" @click="registraPresenca(codigo_palestra1, 'palestra1')">Registrar</q-btn>
                 </q-field>
                 <br>
-                <q-field v-if="usuario.palestra2 == true">
+                <q-field v-if="usuario.palestra2 == true && presente_palestra2 != true && usuario.presenca_palestra2 != true">
                     Painel 1
                     <q-input v-model="codigo_palestra2" placeholder="Digite o código"></q-input>
                     <br>
                     <q-btn color="positive" class="full-width" @click="registraPresenca(codigo_palestra2, 'palestra2')">Registrar</q-btn>
                 </q-field>
                 <br>
-                <q-field v-if="usuario.palestra3 == true">
+                <q-field v-if="usuario.palestra3 == true && presente_palestra3 != true && usuario.presenca_palestra3 != true">
                     Painel 2
                     <q-input v-model="codigo_palestra3" placeholder="Digite o código"></q-input>
                     <br>
@@ -40,6 +40,9 @@ export default {
             codigo_palestra1 :'',
             codigo_palestra2 :'',
             codigo_palestra3 :'',
+            presente_palestra1: false,
+            presente_palestra2: false,
+            presente_palestra3: false,
             codigos: {},
             doc_id: ''
 
@@ -84,6 +87,7 @@ export default {
         validaCodigo(codigo, palestra){
             if(palestra === 'palestra1'){
                 if(codigo === this.codigos.palestra1){
+                    this.presente_palestra1 = true
                     let collection = 
                         Firebase
                             .firestore()
@@ -96,6 +100,7 @@ export default {
             }
             if(palestra === 'palestra2'){
                 if(codigo === this.codigos.palestra2){
+                    this.presente_palestra2 = true
                     let collection = 
                         Firebase
                             .firestore()
@@ -108,6 +113,7 @@ export default {
             }
             if(palestra === 'palestra3'){
                 if(codigo === this.codigos.palestra3){
+                    this.presente_palestra3 = true
                     let collection = 
                         Firebase
                             .firestore()
@@ -124,7 +130,7 @@ export default {
             if(this.validaCodigo(codigo, palestra)){
                 // console.log(this.usuario)
                 let nome = this.usuario.nome_completo
-                Firebase.firestore().collection('sorteio').add({nome: nome.toUpperCase()})
+                Firebase.firestore().collection('sorteio').add({nome: nome})
                 Notify.create({
                     color: "positive",
                     position: "bottom",
