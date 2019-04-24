@@ -12,6 +12,7 @@ import RegistrarChamada from 'pages/usuario/Chamada'
 import RealizarAvaliacao from 'pages/usuario/Avaliar'
 import AdminPresencas from 'pages/admin/Presencas'
 import AdminSorteio from 'pages/admin/Sorteio'
+import Recuperar from 'pages/Recuperar.vue'
 
 export default [
   { // Auth Routes
@@ -28,6 +29,12 @@ export default [
         path: 'sign-up',
         name: 'signUp',
         component: SingUp
+      },
+
+      {
+        path: 'recuperar',
+        name: 'recuperar',
+        component: Recuperar
       }
     ]
   },

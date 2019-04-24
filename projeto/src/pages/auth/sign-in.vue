@@ -16,6 +16,7 @@
             <q-btn class="full-width" label="Cadastrar" color="info" @click="cadastrar()">
               <q-spinner v-if="loading"></q-spinner><q-icon name="add_circle"></q-icon>
             </q-btn>
+            <q-btn color="warning" class="full-width" :to="{name : 'recuperar'}">Esqueci Senha</q-btn>
           </q-layout>
         </q-card-main>
     </q-card>

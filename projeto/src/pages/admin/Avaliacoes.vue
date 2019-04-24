@@ -36,9 +36,10 @@ export default {
     methods:{
         baixarUsuarios(){
             this.usuarios = []
-            Firebase.firestore().collection('usuarios').get().then(
+            Firebase.firestore().collection('usuarios').orderBy('nome_completo').get().then(
                 query => {
                     query.forEach( doc => {
+                        console.log(doc.data())
                         this.usuarios.push(doc.data())
                     } )
                 }
