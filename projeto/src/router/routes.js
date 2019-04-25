@@ -13,6 +13,7 @@ import RealizarAvaliacao from 'pages/usuario/Avaliar'
 import AdminPresencas from 'pages/admin/Presencas'
 import AdminSorteio from 'pages/admin/Sorteio'
 import Recuperar from 'pages/Recuperar.vue'
+import ExportarUsuarios from 'pages/admin/ExportarUsuarios'
 
 export default [
   { // Auth Routes
@@ -95,6 +96,11 @@ export default [
         path: 'sorteio',
         name: 'sorteio',
         component: AdminSorteio
+      },
+      {
+        path: 'exprotar',
+        name: 'exportar',
+        component: ExportarUsuarios
       }
     ]
   },

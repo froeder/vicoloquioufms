@@ -38,6 +38,9 @@
         <q-item :to="{ name: 'avaliacoes' }">
           <q-item-main>Avaliacoes</q-item-main>
         </q-item>
+        <q-item :to="{ name: 'exportar' }">
+          <q-item-main>Exportar Usuários</q-item-main>
+        </q-item>
         <q-item :to="{name: 'sorteio'}">
           <q-item-main>Sorteio</q-item-main>
         </q-item>
