@@ -33,7 +33,7 @@
         <q-card v-if="usuario.palestra1 == true && presente_palestra1 == true && enviada_palestra1 == false && usuario.avaliou_palestra1 != true">
             <q-card-title><strong>Palestra magna</strong></q-card-title>
             <q-card-main>
-                <p>Direitos Humanos – da ética natural à ética do compartilhamento  (Profª Drª Maria de Lourdes Jeffery Contini)</p>
+                <p><strong>Direitos Humanos – da ética natural à ética do compartilhamento  (Profª Drª Maria de Lourdes Jeffery Contini)</strong> </p>
                 <q-field>
                     Relevância do conteúdo apresentado:
                     <q-slider 
@@ -73,7 +73,7 @@
                         color="blue"/>
                 </q-field>
                 <q-field>
-                    Qualidade dos questionamentos e intervenções do público participante desta Palestra:
+                    <strong> Qualidade dos questionamentos e intervenções do público participante desta Palestra: </strong>
                     <q-slider 
                         v-model="avaliacao1.qualidade_questionamento"
                         :min="0" 
@@ -224,7 +224,7 @@
                         color="blue"/>
                 </q-field>
                 <q-field>
-                    Qualidade dos questionamentos e intervenções do público participante do Painel 1:
+                    <strong> Qualidade dos questionamentos e intervenções do público participante do Painel 1: </strong>
                     <q-slider 
                         v-model="painel1.qualidade_questionamento"
                         :min="0" 
@@ -262,7 +262,7 @@
                 </q-field>
                 <br>
                 <q-field>
-                    Psicologia, formação e direitos humanos: desafios contemporâneos (Profª Ma. Sandra Maria Francisco de Amorim)
+                    Domínio técnico sobre o assunto tratado (embasamento teórico):
                     <q-slider 
                         v-model="painel2.palestra1.dominio"
                         :min="0" 
@@ -288,7 +288,7 @@
                 </q-field>
                 <br>
                 <strong>
-                    Profissão: perigo – O fazer antropológico em tempo de ataque aos direitos humanos (Prof. Dr. Guilherme Rodrigues Passamani)
+                    Psicologia, formação e direitos humanos: desafios contemporâneos (Profª Ma. Sandra Maria Francisco de Amorim)
                 </strong>
                 <br>
                 <br>
@@ -418,7 +418,7 @@
                         color="blue"/>
                 </q-field>
                 <q-field>
-                    Qualidade dos questionamentos e intervenções do público participante do Painel 2:
+                    <strong> Qualidade dos questionamentos e intervenções do público participante do Painel 2: </strong>
                     <q-slider 
                         v-model="painel2.qualidade_questionamento"
                         :min="0" 
