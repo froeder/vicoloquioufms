@@ -30,6 +30,9 @@
 </style>
 
 <script>
+import Firebase from 'firebase'
+import { LocalStorage } from 'quasar'
+
   export default {
     name: 'PageIndex',
 
@@ -63,7 +66,8 @@
             sortable: true
           }
         ],
-        tableData: []
+        tableData: [],
+        usuarios: {}
       }
     },
     mounted(){
@@ -73,6 +77,11 @@
       contaUsuarios(){
         this.$firebase.firestore().collection('usuarios').orderBy("nome_completo").get().then(query =>{
           query.forEach(doc => {
+              this.usuarios = doc.data()
+              let users = new Array()
+              users.push(doc.data())
+              LocalStorage.set('users', users)
+
               this.quantidade_inscricoes++
               this.tableData.push({
                 nome: doc.data().nome_completo.toUpperCase(),
@@ -83,6 +92,8 @@
               })
           })
         })
+        let banco = 'userLocal'
+        LocalStorage.set(banco, this.usuarios)
       }
     }
   }

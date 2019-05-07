@@ -98,14 +98,16 @@ module.exports = function (ctx) {
         'QPageSticky',
         'QDatetimePicker',
         'QSlider',
-        'QAlert'
+        'QAlert',
+        'QChip'
       ],
       directives: [
         'Ripple'
       ],
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'LocalStorage'
       ],
       iconSet: ctx.theme.mat ? 'material-icons' : 'ionicons'
     },

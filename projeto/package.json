@@ -14,6 +14,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "firebase": "^5.0.4",
+    "objects-to-csv": "^1.2.1",
+    "vue-json-csv": "^1.2.4",
     "vue-the-mask": "^0.11.1",
     "vuelidate": "^0.7.4"
   },
