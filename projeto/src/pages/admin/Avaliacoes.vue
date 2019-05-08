@@ -2,27 +2,91 @@
     <q-page padding>
         <q-card>
             <q-card-title>
-                Média das Avaliações Palestra Magna
+                Média das Avaliações <strong>Palestra Magna</strong> 
             </q-card-title>
             <q-card-main>
                 Relevância do conteúdo apresentado:
                 <br>
-                {{media_relevancia}}
+                {{media_relevancia_magna.toFixed(2)}}
                 <br>
                 <br>
                 Domínio técnico sobre o assunto tratado (embasamento teórico):
                 <br>
-                {{media_dominio}}
+                {{media_dominio_magna.toFixed(2)}}
                 <br>
                 <br>
                 Metodologia utilizada para a apresentação do conteúdo:
                 <br>
-                {{media_metodologia}}
+                {{media_metodologia_magna.toFixed(2)}}
                 <br>
                 <br>
                 Qualidade dos questionamentos e intervenções do público participante desta Palestra:
                 <br>
-                {{media_questionamento}}
+                {{media_questionamento_magna.toFixed(2)}}
+            </q-card-main>
+        </q-card>
+        <q-card style="margin-top:1em">
+            <q-card-title>
+                Média das Avaliações <strong>Painel 1</strong>
+            </q-card-title>
+            <q-card-main>
+               <section>
+                   <strong>Palestra 1</strong> <br><br>
+                     Relevância do conteúdo apresentado:
+                    <br>
+                    {{media_relevancia_painel1_palestra1.toFixed(2)}}
+                    <br>
+                    <br>
+                    Domínio técnico sobre o assunto tratado (embasamento teórico):
+                    <br>
+                    {{media_dominio_painel1_palestra1.toFixed(2)}}
+                    <br>
+                    <br>
+                    Metodologia utilizada para a apresentação do conteúdo:
+                    <br>
+                    {{media_metodologia_painel1_palestra1.toFixed(2)}}
+                    <br>
+                    <br>
+               </section>
+               <section>
+                   <strong>Palestra 2</strong> <br><br>
+                     Relevância do conteúdo apresentado:
+                    <br>
+                    {{media_relevancia_painel1_palestra2.toFixed(2)}}
+                    <br>
+                    <br>
+                    Domínio técnico sobre o assunto tratado (embasamento teórico):
+                    <br>
+                    {{media_dominio_painel1_palestra2.toFixed(2)}}
+                    <br>
+                    <br>
+                    Metodologia utilizada para a apresentação do conteúdo:
+                    <br>
+                    {{media_metodologia_painel1_palestra2.toFixed(2)}}
+                    <br>
+                    <br>
+                </section>
+                <section>
+                   <strong>Palestra 3</strong> <br><br>
+                     Relevância do conteúdo apresentado:
+                    <br>
+                    {{media_relevancia_painel1_palestra3.toFixed(2)}}
+                    <br>
+                    <br>
+                    Domínio técnico sobre o assunto tratado (embasamento teórico):
+                    <br>
+                    {{media_dominio_painel1_palestra3.toFixed(2)}}
+                    <br>
+                    <br>
+                    Metodologia utilizada para a apresentação do conteúdo:
+                    <br>
+                    {{media_metodologia_painel1_palestra3.toFixed(2)}}
+                    <br>
+                    <br>
+                </section>
+                Qualidade dos questionamentos e intervenções do público participante desta Painel:
+                {{media_questionamento_painel1.toFixed(2)}}
+                <br>
             </q-card-main>
         </q-card>
     </q-page>
@@ -34,42 +98,107 @@ import Firebase from 'firebase'
 export default {
     data(){
         return{
-            media_dominio: 0,
-            dominio: 0,
-            media_relevancia: 0,
-            relevancia: 0,
-            media_metodologia: 0,
-            metodologia: 0,
-            media_questionamento: 0,
-            questionamento: 0,
-            tamanho: 0,
+            media_dominio_magna: 0,
+            dominio_magna: 0,
+            media_relevancia_magna: 0,
+            relevancia_magna: 0,
+            media_metodologia_magna: 0,
+            metodologia_magna: 0,
+            media_questionamento_magna: 0,
+            questionamento_magna: 0,
+            tamanho_magna: 0,
+
+            media_dominio_painel1_palestra1: 0,
+            dominio_painel1_palestra1: 0,
+            media_relevancia_painel1_palestra1: 0,
+            relevancia_painel1_palestra1: 0,
+            media_metodologia_painel1_palestra1: 0,
+            metodologia_painel1_palestra1: 0,
+            tamanho_painel1_palestra1: 0,
+
+            media_dominio_painel1_palestra2: 0,
+            dominio_painel1_palestra2: 0,
+            media_relevancia_painel1_palestra2: 0,
+            relevancia_painel1_palestra2: 0,
+            media_metodologia_painel1_palestra2: 0,
+            metodologia_painel1_palestra2: 0,
+            tamanho_painel1_palestra2: 0,
+
+            media_dominio_painel1_palestra3: 0,
+            dominio_painel1_palestra3: 0,
+            media_relevancia_painel1_palestra3: 0,
+            relevancia_painel1_palestra3: 0,
+            media_metodologia_painel1_palestra3: 0,
+            metodologia_painel1_palestra3: 0,
+            tamanho_painel1_palestra3: 0,
+
+            questionamento_painel1: 0,
+            media_questionamento_painel1: 0,
         }
     },
     mounted(){
-        this.calculaMedia()
+        this.calculaMediaPalestraMagna()
+        this.calculaMediaPrimeiroPainel()
         
-        // console.log(this.tamanho)
+        // console.log(this.tamanho_magna)
     },
     methods:{
-        calculaMedia(){
+        calculaMediaPalestraMagna(){
             Firebase.firestore().collection('avaliacao1').get().then(
                 query => {
                     query.forEach(doc => {
                         // console.log(doc.data())
                         let dado = doc.data()
-                        this.dominio = this.dominio + dado.dominio
-                        this.relevancia = this.relevancia + dado.relevancia
-                        this.metodologia = this.metodologia + dado.metodologia
-                        this.questionamento = this.questionamento + dado.qualidade_questionamento
-                        this.tamanho ++  
+                        this.dominio_magna = this.dominio_magna + dado.dominio
+                        this.relevancia_magna = this.relevancia_magna + dado.relevancia
+                        this.metodologia_magna = this.metodologia_magna + dado.metodologia
+                        this.questionamento_magna = this.questionamento_magna + dado.qualidade_questionamento
+                        this.tamanho_magna ++  
                     })
-                    this.media_dominio = this.dominio / this.tamanho
-                    this.media_relevancia = this.relevancia / this.tamanho
-                    this.media_metodologia = this.metodologia / this.tamanho
-                    this.media_questionamento = this.questionamento / this.tamanho
+                    this.media_dominio_magna = this.dominio_magna / this.tamanho_magna
+                    this.media_relevancia_magna = this.relevancia_magna / this.tamanho_magna
+                    this.media_metodologia_magna = this.metodologia_magna / this.tamanho_magna
+                    this.media_questionamento_magna = this.questionamento_magna / this.tamanho_magna
                 }
             )
             
+        },
+        calculaMediaPrimeiroPainel(){
+            Firebase.firestore().collection('painel1').get().then(
+                query => {
+                    query.forEach(doc => {
+                        let dado_p1 = doc.data().palestra1
+                        this.dominio_painel1_palestra1 = this.dominio_painel1_palestra1 + dado_p1.dominio
+                        this.relevancia_painel1_palestra1 = this.relevancia_painel1_palestra1 + dado_p1.relevancia
+                        this.metodologia_painel1_palestra1 = this.metodologia_painel1_palestra1 + dado_p1.metodologia
+                        this.tamanho_painel1_palestra1 ++  
+
+                        let dado_p2 = doc.data().palestra2
+                        this.dominio_painel1_palestra2 = this.dominio_painel1_palestra2 + dado_p2.dominio
+                        this.relevancia_painel1_palestra2 = this.relevancia_painel1_palestra2 + dado_p2.relevancia
+                        this.metodologia_painel1_palestra2 = this.metodologia_painel1_palestra2 + dado_p2.metodologia
+                        this.tamanho_painel1_palestra2 ++  
+
+                        let dado_p3 = doc.data().palestra3
+                        this.dominio_painel1_palestra3 = this.dominio_painel1_palestra3 + dado_p3.dominio
+                        this.relevancia_painel1_palestra3 = this.relevancia_painel1_palestra3 + dado_p3.relevancia
+                        this.metodologia_painel1_palestra3 = this.metodologia_painel1_palestra3 + dado_p3.metodologia
+                        this.tamanho_painel1_palestra3 ++ 
+                        
+                    })
+                    this.media_dominio_painel1_palestra1 = this.dominio_painel1_palestra1 / this.tamanho_painel1_palestra1
+                    this.media_relevancia_painel1_palestra1 = this.relevancia_painel1_palestra1 / this.tamanho_painel1_palestra1
+                    this.media_metodologia_painel1_palestra1 = this.metodologia_painel1_palestra1 / this.tamanho_painel1_palestra1
+
+                    this.media_dominio_painel1_palestra2 = this.dominio_painel1_palestra2 / this.tamanho_painel1_palestra2
+                    this.media_relevancia_painel1_palestra2 = this.relevancia_painel1_palestra2 / this.tamanho_painel1_palestra2
+                    this.media_metodologia_painel1_palestra2 = this.metodologia_painel1_palestra2 / this.tamanho_painel1_palestra2
+
+                    this.media_dominio_painel1_palestra3 = this.dominio_painel1_palestra3 / this.tamanho_painel1_palestra3
+                    this.media_relevancia_painel1_palestra3 = this.relevancia_painel1_palestra3 / this.tamanho_painel1_palestra3
+                    this.media_metodologia_painel1_palestra3 = this.metodologia_painel1_palestra3 / this.tamanho_painel1_palestra3
+                }
+            )
         }
     }
 }
