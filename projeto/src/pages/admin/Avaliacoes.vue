@@ -175,7 +175,47 @@
             <q-card-title>Comentários</q-card-title>
             <q-card-main>
                 <section>
-
+                    <big>Questão 1:</big>
+                    
+                    <q-field class="align-left">
+                        <q-input
+                            type="textarea"
+                            rows="7"
+                            v-for="comentario in comentarios"
+                            disable
+                        >
+                        {{comentario.questao1 ? comentario.questao1 : 'Nao informado'}} 
+                        </q-input>
+                    </q-field>
+                </section>
+                <br>
+                <br>
+                <section>
+                    <big> Questão 2:</big>
+                    <q-field class="align-left">
+                        <q-input
+                            type="textarea"
+                            rows="7"
+                            v-for="comentario in comentarios"
+                            disable
+                        >
+                        {{comentario.questao2 ? comentario.questao2 : 'Nao informado'}} 
+                        </q-input>
+                    </q-field>
+                </section>
+                <br><br>
+                <section>
+                   <big>Questão 3:</big> 
+                    <q-field class="align-left">
+                        <q-input
+                            type="textarea"
+                            rows="7"
+                            v-for="comentario in comentarios"
+                            disable
+                        >
+                        {{comentario.questao3 ? comentario.questao3 : 'Nao informado'}} 
+                        </q-input>
+                    </q-field>
                 </section>
             </q-card-main>
         </q-card>
@@ -259,13 +299,15 @@ export default {
 
             questionamento_painel2: 0,
             media_questionamento_painel2: 0,
+
+            comentarios: []
         }
     },
     mounted(){
         this.calculaMediaPalestraMagna()
         this.calculaMediaPrimeiroPainel()
         this.calculaMediaSegundoPainel()
-        
+        this.pegaComentarios()
         // console.log(this.tamanho_magna)
     },
     methods:{
@@ -338,17 +380,19 @@ export default {
                 query => {
                     query.forEach(doc => {
                         let dado_p1 = doc.data().palestra1
-                        this.dominio_painel2_palestra1 = this.dominio_painel2_palestra1 + dado_p1.dominio
-                        this.relevancia_painel2_palestra1 = this.relevancia_painel2_palestra1 + dado_p1.relevancia
-                        this.metodologia_painel2_palestra1 = this.metodologia_painel2_palestra1 + dado_p1.metodologia
-                        this.tamanho_painel2_palestra1 ++  
-
+                        if(doc.data().palestra1){
+                            this.dominio_painel2_palestra1 = this.dominio_painel2_palestra1 + dado_p1.dominio
+                            this.relevancia_painel2_palestra1 = this.relevancia_painel2_palestra1 + dado_p1.relevancia
+                            this.metodologia_painel2_palestra1 = this.metodologia_painel2_palestra1 + dado_p1.metodologia
+                            this.tamanho_painel2_palestra1 ++  
+                        }
                         let dado_p2 = doc.data().palestra2
-                        this.dominio_painel2_palestra2 = this.dominio_painel2_palestra2 + dado_p2.dominio
-                        this.relevancia_painel2_palestra2 = this.relevancia_painel2_palestra2 + dado_p2.relevancia
-                        this.metodologia_painel2_palestra2 = this.metodologia_painel2_palestra2 + dado_p2.metodologia
-                        this.tamanho_painel2_palestra2 ++  
-
+                        if(doc.data().palestra2){
+                            this.dominio_painel2_palestra2 = this.dominio_painel2_palestra2 + dado_p2.dominio
+                            this.relevancia_painel2_palestra2 = this.relevancia_painel2_palestra2 + dado_p2.relevancia
+                            this.metodologia_painel2_palestra2 = this.metodologia_painel2_palestra2 + dado_p2.metodologia
+                            this.tamanho_painel2_palestra2 ++ 
+                        }
                         let dado_p3 = doc.data().palestra3
                         if(doc.data().palestra3){
                             this.dominio_painel2_palestra3 = this.dominio_painel2_palestra3 + dado_p3.dominio
@@ -387,7 +431,17 @@ export default {
                     this.media_relevancia_painel2_palestra4 = this.relevancia_painel2_palestra4 / this.tamanho_painel2_palestra4
                     this.media_metodologia_painel2_palestra4 = this.metodologia_painel2_palestra4 / this.tamanho_painel2_palestra4
 
-                    this.media_questionamento_painel1 = this.questionamento_painel2 / this.tamanho_painel1_palestra1
+                    this.media_questionamento_painel2 = this.questionamento_painel2 / this.tamanho_painel2_palestra1
+                }
+            )
+        },
+        pegaComentarios(){
+            Firebase.firestore().collection('avaliacao_geral').get().then(
+                query => {
+                    query.forEach(doc => {
+                        console.log(doc.data())
+                        this.comentarios.push(doc.data())
+                    })
                 }
             )
         }
