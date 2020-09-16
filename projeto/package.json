@@ -1,8 +1,8 @@
 {
   "name": "icoloquio",
   "version": "1.0.0",
-  "description": "IV Colóquio dos Direitos Humanos",
-  "productName": "IV Colóquio",
+  "description": "judOn",
+  "productName": "judOn",
   "cordovaId": "org.froeder.ivcoloquio.app",
   "author": "Jhonatan Froeder",
   "private": true,
